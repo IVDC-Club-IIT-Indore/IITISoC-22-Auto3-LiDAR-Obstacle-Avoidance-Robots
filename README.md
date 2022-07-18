@@ -28,12 +28,31 @@ Members :
         <li><a href="#lidar-model">LiDAR Model</a></li>
         <li><a href="#robot">Robot</a></li>
       </ul>
+    </li>
+    <li>
       <a href="#getting-started">Getting Started</a>    
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
+    </li>
+    <li>
       <a href="#usage">Usage</a>
+    </li>
+    <li>
+      <a href="#how-it-works">How it works</a>
+    </li>
+    <li>
+      <a href="#roadmap">Roadmap</a>
+    </li>
+    <li>
+      <a href="#contributing">Contributing</a>
+    </li>
+    <li>
+      <a href="#contact-us">Contact us</a>
+    </li>
+    <li>
+      <a href="#acknowledgements">Acknowledgements</a>
     </li>
   </ol>
 </details>

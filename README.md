@@ -1,6 +1,7 @@
 # LiDAR Obstacle Avoidance Robots
 
 [Under construction... do not add to the final repo till someone removes this message]
+This repository was written for the Indian Institute of Technology Indore Summer of Code 2022. Kindly check the contributing section if you're not an IITI alumni.
 
 Mentors: [Kshitij Bhat](https://github.com/KshitijBhat), [Bhavya Dalal](https://github.com/dalalbhavya)
 
@@ -27,6 +28,12 @@ Members :
         <li><a href="#lidar-model">LiDAR Model</a></li>
         <li><a href="#robot">Robot</a></li>
       </ul>
+      <a href="#getting-started">Getting Started</a>    
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+      <a href="#usage">Usage</a>
     </li>
   </ol>
 </details>
@@ -44,7 +51,6 @@ decisions and make judgments of static and dynamic obstacles
 (or other robots) around it to avoid collisions and hazards.
 LiDAR-based obstacle avoidance and dynamic tracking systems
 must be deployed with a robust decision-making architecture.
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Specifications:
 - Any 3D LiDAR may be used (_Ouster OS_ series or _Velodyne
@@ -70,10 +76,23 @@ This was coupled with additions like rQT and rViz to visualize relevant data.
 
 This selection was primarily to receive accurate simulation data alongside actually being able to run the simulation. The OS Ouster series involved LiDARs having up to 128 channels which weren't running on our Gazebo simulators. Due to our use case being a warehouse, 16 and 32 channel LiDARs can work very well.
 
-This ensures that our simulations can run on Gazebo. In the end, we selected VLP-16 due to the availability of some very cool datasets(like [this](https://github.com/TixiaoShan/Stevens-VLP16-Dataset)) and compatibility with our model and certain nodes shown ahead.
+This ensures that our simulations can run on Gazebo. In the end, we selected VLP-16 due to the availability of some very cool datasets(like [this](https://github.com/TixiaoShan/Stevens-VLP16-Dataset)) and compatibility with our model and certain nodes shown ahead. [Might be improved if we get access to a good GPU]
 
 ## Robot
 
 We split into 2 teams and tried to implement LiDARs on certain candidate models like Turtlebot3, Turtlebot3 Friends Series and Clearpath Jackal. Despite looking very interesting, the Turtlebot3 Friends Series either didn't have space for LiDARs or were not fit for work in a warehouse environment.
 
 Out of the remaining models, **Clearpath Jackal** was clearly suited for higher speed tasks and had a better control system. It also had seamless integration with Velodyne LiDARs.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Getting Started
+
+### Prerequisites
+### Installation
+## Usage
+## How it works
+## Roadmap
+## Contributing
+On the off chance that someone other than the judges or mentors see this, 
+

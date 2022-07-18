@@ -1,6 +1,6 @@
 # LiDAR Obstacle Avoidance Robots
 
-[Under construction... do not add to the final repo till I remove this message]
+[Under construction... do not add to the final repo till someone removes this message]
 
 Mentors: [Kshitij Bhat](https://github.com/KshitijBhat), [Bhavya Dalal](https://github.com/dalalbhavya)
 
@@ -15,17 +15,17 @@ Members :
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#Project-Despcription">Project Description</a>
+      <a href="#project-description">Project Description</a>
       <ul>
-        <li><a href="#Specifications">Specifications</a></li>
+        <li><a href="#specifications">Specifications</a></li>
       </ul>
     </li>
     <li>
-      <a href="#Selecting">Selecting</a>
+      <a href="#selecting">Selecting</a>
       <ul>
-        <li><a href="#sotware-stack">Software Stack</a></li>
-        <li><a href="#LiDAR-Model">LiDAR Model</a></li>
-        <li><a href="#Robot">Robot</a></li>
+        <li><a href="#software-stack">Software Stack</a></li>
+        <li><a href="#lidar-model">LiDAR Model</a></li>
+        <li><a href="#robot">Robot</a></li>
       </ul>
     </li>
   </ol>
@@ -56,3 +56,12 @@ preferred for such high-speed and high-accuracy tasks.
 software stack.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Selecting
+### Software Stack
+
+- **ROS Noetic** allows developers to easily simulate their robot in any environment, before deploying anything in the real world. This version is specific to **Ubuntu 20.04** and the above code has only been tested with these conditions.
+This was coupled with additions like rQT and rViz to visualize relevant data.
+
+- **Gazebo** brings a a complete toolbox of development libraries and cloud services to make simulation easy.
+
+- Multiple command lines make execution of these statements much easier.

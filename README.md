@@ -137,31 +137,37 @@ WhatsApp: 93726 79958
 
 
 **Akshit Raizada:**
-[LinkedIn](https://www.linkedin.com/in/akshit-raizada-56a816228/)
-[Github](https://github.com/AkshitRaizada)
+[LinkedIn, ](https://www.linkedin.com/in/akshit-raizada-56a816228/)
+[Github, ](https://github.com/AkshitRaizada)
 WhatsApp: 96999 30412
 
 
 **Abiroop Mohan:**
-[LinkedIn](https://www.linkedin.com/in/abiroop-mohan-3145b322a/)
-[Github](https://github.com/Abiroop)
+[LinkedIn, ](https://www.linkedin.com/in/abiroop-mohan-3145b322a/)
+[Github, ](https://github.com/Abiroop)
 WhatsApp: 73388 33401
 
 
 
 **Aditya Guhagarkar:**
-[LinkedIn](https://www.linkedin.com/in/aditya-guhagarkar/)
-[Github](https://github.com/AG10GA)
+[LinkedIn, ](https://www.linkedin.com/in/aditya-guhagarkar/)
+[Github, ](https://github.com/AG10GA)
 WhatsApp: 97699 50455
 
 
 
 
 ## Acknowledgements
-[https://github.com/koide3/hdl_graph_slam.git](https://github.com/koide3/hdl_graph_slam.git)
-[https://github.com/koide3/ndt_omp.git](https://github.com/koide3/ndt_omp.git)
-[https://github.com/SMRT-AIST/fast_gicp.git](https://github.com/SMRT-AIST/fast_gicp.git)
-[https://github.com/koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam)
+[1. https://github.com/koide3/hdl_graph_slam.git,](https://github.com/koide3/hdl_graph_slam.git)
+
+
+[2. https://github.com/koide3/ndt_omp.git](https://github.com/koide3/ndt_omp.git)
+
+
+[3. https://github.com/SMRT-AIST/fast_gicp.git](https://github.com/SMRT-AIST/fast_gicp.git)
+
+
+[4. https://github.com/koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam)
 
 
 

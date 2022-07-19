@@ -17,6 +17,8 @@ Members :
 - [Abiroop Mohan](https://github.com/Abiroop)
 - [Aditya Guhagarkar](https://github.com/AG10GA)
 
+[![](https://img.shields.io/badge/License-GPLv3-blue.svg)]()
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -118,8 +120,19 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 ## Getting Started
 
 ### Prerequisites
+```
+sudo apt-get install ros-noetic-jackal-*
+sudo apt-get install ros-noetic-velodyne-*
+```
+<Insert all sudo apt commands here>
+
 ### Installation
+<Insert git clone and catkin_make commands here>
+(Might merge the above 2 subsections)
+
 ## Usage
+<Insert commands to run the program and explain how to run its features here>
+
 ## How it works
 ![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
 The above is the compute graph excluding the 3D SLAM (since the mapping is only run once).
@@ -171,7 +184,36 @@ Note: Members(or mentors) can add any wacky ideas here through pull requests. If
 - Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )
  
 ## Contributing
-On the off chance that someone other than the judges or mentors see this, 
+
+On the off chance that someone outside IIT Indore finds this repository, kindly refrain from sending pull requests or code till the contest is over. You are free to ask about the implementation of the project or any errors encountered during installation. Feel free to contact any of us.
+
+Members must contribute as required and the person with the latest working version or test machine will upload the code and send a pull request to the mentors. 
+
+(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
+
+## Contact Us
+
+**Sairaj Loke:**
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sairaj-loke-24370b237)
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SairajLoke)
+[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:cse210001035@iiti.ac.in)
+
+
+**Akshit Raizada:**
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akshit-raizada-56a816228/)
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AkshitRaizada)
+[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:me210003009@iiti.ac.in)
+[![](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/thugunb)
+
+**Abiroop Mohan:**
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abiroop-mohan-3145b322a/)
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Abiroop)
+[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ee210002004@iiti.ac.in)
+
+**Aditya Guhagarkar:**
+[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aditya-guhagarkar/)
+[![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AG10GA)
+[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ee210002005@iiti.ac.in)
 
 [contributors-shield]: https://img.shields.io/github/contributors/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=informational&style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
@@ -182,5 +224,3 @@ On the off chance that someone other than the judges or mentors see this,
 [issues-shield]: https://img.shields.io/github/issues-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=%23FF0000&style=for-the-badge
 [issues-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/issues
 
-
-[![](https://img.shields.io/badge/License-GPLv3-blue.svg)]()

@@ -198,9 +198,10 @@ On the off chance that someone outside IIT Indore finds this repository, kindly 
 
 Members must contribute as required and the person with the latest working version or test machine will upload the code and send a pull request to the mentors. 
 
-(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
+(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update. Add your social medias in the Contact Us section if you want to.)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Contact Us
 
 **Sairaj Loke:**

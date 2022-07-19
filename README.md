@@ -245,6 +245,7 @@ Members must contribute as required and the person with the latest working versi
 (Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Contact Us
 
 **Sairaj Loke:**

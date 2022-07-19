@@ -122,10 +122,18 @@ The Rviz configuration for the simulation was heavily modified to accurately plo
 
 While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case).
 
-The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed. (Navigation with moving objects in Gazebo will be tested after mid evaluation)
+The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed. (Navigation with moving objects in Gazebo will be tested after mid evaluation).
 
-The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance.
+The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance(implementation after mid eval). 3D SLAM is used to map the 3D environment so that these maps are loaded into the system only upon reaching the destination which saves valuable computation time. These maps can also be used to generate 2D maps in case the warehouse has steps or other low-lying objects below the level of the 2D LIDAR. It can also be used to detect where a required good is placed and check for availability of space to keep a certain good.
 
+As of now, we have implemented a 3D mapping algorithm and a people tracking algorithm. But haven't been able to test if it can detect people effectively due to an acute shortage of people in Gazebo. But here's a demo of our 3D mapping:-
+![image](https://user-images.githubusercontent.com/105885452/179753612-eada1c57-8798-45d4-a697-1e37cf63d195.png)
+(Left) Gazebo Simulation
+(Right) Corresponding 3D map - The vehicle was displaced from the position shown in the simulation... the yellow lines at the bottom are the LiDAR lines falling on the ground generated at the "circled spots". A larger .bag file is required to generate larger maps, we've haven't moved much in this demo so the file is small.
+
+Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments like the following:- (Many more .world files have been provided... modify line 7 in gmappingdemo.launch to try them)
+
+(Put gifs of rviz simulations of different world, maybe even only 3d data)
 ## Roadmap
 ## Contributing
 On the off chance that someone other than the judges or mentors see this, 

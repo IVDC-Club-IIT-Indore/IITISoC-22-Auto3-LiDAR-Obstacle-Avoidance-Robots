@@ -124,14 +124,14 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 sudo apt-get install ros-noetic-jackal-*
 sudo apt-get install ros-noetic-velodyne-*
 ```
-<Insert all sudo apt commands here>
+Insert all sudo apt commands here
 
 ### Installation
-<Insert git clone and catkin_make commands here>
+Insert git clone and catkin_make commands here
 (Might merge the above 2 subsections)
 
 ## Usage
-<Insert commands to run the program and explain how to run its features here>
+Insert commands to run the program and explain how to run its features here
 
 ## How it works
 ![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
@@ -208,7 +208,7 @@ Members must contribute as required and the person with the latest working versi
 **Abiroop Mohan:**
 [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abiroop-mohan-3145b322a/)
 [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Abiroop)
-[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ee210002004@iiti.ac.in)
+[![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:abiroopmohan@gmail.com)
 
 **Aditya Guhagarkar:**
 [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aditya-guhagarkar/)

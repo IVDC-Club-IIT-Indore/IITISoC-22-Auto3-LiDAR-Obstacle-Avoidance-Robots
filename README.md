@@ -108,9 +108,17 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 ## Getting Started
 
 ### Prerequisites
+1.Basic linux commands
+2.ROS
+3.Gazebo
+
 ### Installation
+'''sudo apt-get install ros-noetic-jackal-*
+sudo apt-get install ros-noetic-velodyne-*'''
 ## Usage
+Useful for any automated ground vehicles in warehouses
 ## How it works
+It uses a 3D lidar (VLP 16) to gather data from its surroundings. The requirement of 3D data is to sense not just its paths but to also sense humans moving around.
 ## Roadmap
 ## Contributing
 On the off chance that someone other than the judges or mentors see this, 

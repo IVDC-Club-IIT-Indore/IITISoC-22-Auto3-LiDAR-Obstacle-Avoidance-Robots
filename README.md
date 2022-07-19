@@ -131,10 +131,12 @@ Insert git clone and catkin_make commands here
 (Might merge the above 2 subsections)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Usage
 Insert commands to run the program and explain how to run its features here
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## How it works
 ![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
 The above is the compute graph excluding the 3D SLAM (since the mapping is only run once).
@@ -163,6 +165,7 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 (Put gifs of rviz simulations of different world, maybe even only 3d data)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Roadmap
 ### Finalized
 - [x] 3D SLAM Implementation (We finished it before time... might refine)

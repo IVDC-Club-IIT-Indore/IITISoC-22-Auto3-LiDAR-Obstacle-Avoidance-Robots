@@ -7,8 +7,6 @@
 [![](https://img.shields.io/github/issues-pr-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=important&style=for-the-badge)](https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/pulls)
 
 # LiDAR Obstacle Avoidance Robots
-
-[Under construction... do not add to the final repo till someone removes this message]
 This repository was written for the Indian Institute of Technology Indore Summer of Code 2022. Kindly check the contributing section if you're not an IITI alumni.
 
 Mentors: [Kshitij Bhat](https://github.com/KshitijBhat), [Bhavya Dalal](https://github.com/dalalbhavya)
@@ -52,6 +50,10 @@ Members :
     </li>
     <li>
       <a href="#roadmap">Roadmap</a>
+      <ul>
+        <li><a href="#finalized">Finalized</a></li>
+        <li><a href="#ideas">Ideas</a></li>
+      </ul>
     </li>
     <li>
       <a href="#contributing">Contributing</a>
@@ -139,10 +141,35 @@ As of now, we have implemented a 3D mapping algorithm and a people tracking algo
 (Left) Gazebo Simulation
 (Right) Corresponding 3D map - The vehicle was displaced from the position shown in the simulation... the yellow lines at the bottom are the LiDAR lines falling on the ground generated at the "circled spots". A larger .bag file is required to generate larger maps, we've haven't moved much in this demo so the file is small.
 
+The 3D data is recorded in a .bag file and then converted into a format that can be accepeted by the 3D slam algorithm.
+
 Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments like the following:- (Many more .world files have been provided... modify line 7 in gmappingdemo.launch to try them)
 
 (Put gifs of rviz simulations of different world, maybe even only 3d data)
 ## Roadmap
+### Finalized
+- [x] 3D SLAM Implementation (We finished it before time... might refine)
+- [x] Person Identification (Implemented but hasn't been tested)
+- [ ] 3D Object Tracking
+- [ ] Improved Path Planning using C++ code
+- [ ] Simplifying Installation Process (.bash files? , adding to repo?)
+
+<div id="ideas"></div>
+
+### Ideas
+
+(random thoughts... might implement if we have time)
+
+Note: Members(or mentors) can add any wacky ideas here through pull requests. If everyone agrees to implement it, we'll switch it to finalized.
+
+- Provide set-up for IRL Jackal Installation
+
+- Use person identification to make a person follower robot so that it can carry those boxes around... or do something similar to [MIT's Jackal](https://www.youtube.com/watch?v=CK1szio7PyA)
+
+- Use roswtf to handle error situations like collisions
+
+- Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )
+ 
 ## Contributing
 On the off chance that someone other than the judges or mentors see this, 
 
@@ -154,5 +181,6 @@ On the off chance that someone other than the judges or mentors see this,
 [stars-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/stargazers
 [issues-shield]: https://img.shields.io/github/issues-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=%23FF0000&style=for-the-badge
 [issues-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/issues
-[pull-requests-shield]https://img.shields.io/github/issues-pr-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=important&style=for-the-badge
-[pull-requests-url]https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/pulls
+
+
+[![](https://img.shields.io/badge/License-GPLv3-blue.svg)]()

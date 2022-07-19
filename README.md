@@ -130,9 +130,11 @@ Insert all sudo apt commands here
 Insert git clone and catkin_make commands here
 (Might merge the above 2 subsections)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 ## Usage
 Insert commands to run the program and explain how to run its features here
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 ## How it works
 ![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
 The above is the compute graph excluding the 3D SLAM (since the mapping is only run once).
@@ -159,6 +161,8 @@ The 3D data is recorded in a .bag file and then converted into a format that can
 Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments like the following:- (Many more .world files have been provided... modify line 7 in gmappingdemo.launch to try them)
 
 (Put gifs of rviz simulations of different world, maybe even only 3d data)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 ## Roadmap
 ### Finalized
 - [x] 3D SLAM Implementation (We finished it before time... might refine)
@@ -182,7 +186,9 @@ Note: Members(or mentors) can add any wacky ideas here through pull requests. If
 - Use roswtf to handle error situations like collisions
 
 - Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )
- 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Contributing
 
 On the off chance that someone outside IIT Indore finds this repository, kindly refrain from sending pull requests or code till the contest is over. You are free to ask about the implementation of the project or any errors encountered during installation. Feel free to contact any of us.
@@ -191,6 +197,7 @@ Members must contribute as required and the person with the latest working versi
 
 (Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 ## Contact Us
 
 **Sairaj Loke:**
@@ -214,6 +221,15 @@ Members must contribute as required and the person with the latest working versi
 [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aditya-guhagarkar/)
 [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AG10GA)
 [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ee210002005@iiti.ac.in)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Acknowledgements
+
+1. https://github.com/koide3/hdl_graph_slam.git,
+2. https://github.com/koide3/ndt_omp.git
+3. https://github.com/SMRT-AIST/fast_gicp.git
+4. https://github.com/koide3/hdl_graph_slam
 
 [contributors-shield]: https://img.shields.io/github/contributors/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=informational&style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors

@@ -120,21 +120,59 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 ## Getting Started
 
 ### Prerequisites
+
 ```
+sudo apt-get install ros-noetic-jackal-simulator ros-noetic-jackal-navigation
 sudo apt-get install ros-noetic-jackal-*
 sudo apt-get install ros-noetic-velodyne-*
 ```
 Insert all sudo apt commands here
 
 ### Installation
+PLEASE INSTALL ALL DEPENDENCIES ACCORDING TO THESE STEPS, 
+
+
+WE HAVE MADE HEAVY MODIFICATIONS IN THE DEPENDENCIES, WHICH WILL NOT BE REFLECTED UNLESS DOWNLOADED FROM THIS REPOSITORY.
+
+
+This includes melodic & kinetic packages which have been modified to be run on noetic systems.
+
+
 Insert git clone and catkin_make commands here
 (Might merge the above 2 subsections)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
-Insert commands to run the program and explain how to run its features here
+Insert commands to run the program and explain how to run its features here.
 
+
+After going inside the workspace run
+```source devel/setup.bash
+   export JACKAL_LASER_3D=1
+   roslaunch jackal_velodyne gmapping_demo.launch
+```
+
+
+3D SLAM
+```
+roscore
+
+```
+
+
+Improve Record Command
+```
+rosparam set use_sim_time true
+rosbag record /mid/points
+osparam set use_sim_time true
+roslaunch hdl_graph_slam hdl_graph_slam_501.launch
+roscd hdl_graph_slam/rviz
+rviz -d hdl_graph_slam.rviz
+rosrun rosbag topic_renamer.py /mid/points PleasE.bag /filtered_points FinalE.bag
+rosrun hdl_graph_slam bag_player.py hdl_501_filtered.bag
+rosservice call /hdl_graph_slam/save_map "resolution: 0.05 destination: '/full_path_directory/map.pcd'"
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## How it works
@@ -167,6 +205,7 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Roadmap
+
 ### Finalized
 - [x] 3D SLAM Implementation (We finished it before time... might refine)
 - [x] Person Identification (Implemented but hasn't been tested)
@@ -177,6 +216,7 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 <div id="ideas"></div>
 
 ### Ideas
+
 
 (random thoughts... might implement if we have time)
 
@@ -189,8 +229,12 @@ Note: Members(or mentors) can add any wacky ideas here through pull requests. If
 - Use roswtf to handle error situations like collisions
 
 - Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )
+- Mutiple Robot simulations
+- Controlling Jackal using keyboard
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 ## Contributing
 
@@ -198,10 +242,9 @@ On the off chance that someone outside IIT Indore finds this repository, kindly 
 
 Members must contribute as required and the person with the latest working version or test machine will upload the code and send a pull request to the mentors. 
 
-(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update. Add your social medias in the Contact Us section if you want to.)
+(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Contact Us
 
 **Sairaj Loke:**

@@ -111,6 +111,21 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 ### Installation
 ## Usage
 ## How it works
+![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
+The above is the compute graph excluding the 3D SLAM (since the mapping is only run once).
+
+After selection, we simulated the LiDAR using 4-5 methods and the official implementation of Velodyne LiDAR(jackal_velodyne) gave us the most customizable form through a .xacro file. Thus, we can simulate different LiDARs through this library but let's stick to the one decided above since we have its datasets for training for object avoidance.
+
+The Rviz configuration for the simulation was heavily modified to accurately plot the captured data and include the robot model.
+
+![Model](https://media.discordapp.net/attachments/998910899693830146/998914333956395119/rviz_screenshot_2022_07_19-16_57_55.png?width=666&height=629)
+
+While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case).
+
+The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed. (Navigation with moving objects in Gazebo will be tested after mid evaluation)
+
+The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance.
+
 ## Roadmap
 ## Contributing
 On the off chance that someone other than the judges or mentors see this, 

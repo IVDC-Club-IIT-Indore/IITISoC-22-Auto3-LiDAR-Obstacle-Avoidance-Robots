@@ -145,16 +145,20 @@ This includes melodic & kinetic packages which have been modified to be run on n
 
 Type the following commands in the terminal:-
 ```
-cd
+mkdir IITISOC_ws
+cd IITISOC_ws
 git clone https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots
-cd ~/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/src
+mv IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots src
+cd src
 git clone https://github.com/koide3/hdl_graph_slam
 git clone https://github.com/SMRT-AIST/fast_gicp.git --recursive
 cd ..
 catkin_make
-source ~/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/devel/setup.bash
 ```
-
+If you ever encounter an error that the directory that you're trying to run is missing then run this:- (adding it to .bashrc might simplify this)
+```
+source ~/IITISOC_ws/devel/setup.bash
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -162,8 +166,10 @@ source ~/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/devel/setup.bash
 Insert commands to run the program and explain how to run its features here.
 
 **TO RUN NAVIGATION**
+
 After going inside the workspace run
 ```
+cd IITISOC_ws
 source devel/setup.bash
 export JACKAL_LASER_3D=1
 roslaunch jackal_velodyne gmapping_demo.launch
@@ -171,12 +177,13 @@ roslaunch jackal_velodyne gmapping_demo.launch
 
 
 **TO RUN 3D SLAM**
-Step 1 : Type the following in Terminal 1:-
+
+Step 1 : Type the following in a terminal:-
 ```
 roscore
 
 ```
-Step 2: Run 2D LiDAR mapping(shown above) in a different terminal
+Step 2: Run Navigation(shown above) in a different terminal
 
 Step 3 : Open a new terminal and type the following:-
 ```
@@ -202,13 +209,11 @@ rosrun rosbag topic_renamer.py /mid/points PleasE.bag /filtered_points FinalE.ba
 rosrun hdl_graph_slam bag_player.py FinalE.bag
 ```
 
-Step 7 :
+Step 7 : To save the 3D map (replace "/full_path_directory" with the path to the folder where you want to save it)
 ```
 rosservice call /hdl_graph_slam/save_map "resolution: 0.05 destination: '/full_path_directory/map.pcd'"
 ```
 
-
-Improve Record Command
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## How it works
@@ -246,7 +251,7 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 - [x] Person Identification (Implemented but hasn't been tested)
 - [ ] 3D Object Tracking
 - [ ] Improved Path Planning using C++ code
-- [ ] Simplifying Installation Process (.bash files? , adding to repo?)
+- [ ] Simplifying Installation Process (.bash files? , adding to repo?, use the src file properly and .bashrc)
 
 <div id="ideas"></div>
 

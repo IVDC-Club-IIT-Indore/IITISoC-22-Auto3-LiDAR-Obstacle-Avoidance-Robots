@@ -151,6 +151,7 @@ git clone https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacl
 mv IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots src
 cd src
 git clone https://github.com/koide3/hdl_graph_slam
+git clone https://github.com/koide3/ndt_omp
 git clone https://github.com/SMRT-AIST/fast_gicp.git --recursive
 cd ..
 catkin_make

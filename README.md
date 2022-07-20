@@ -121,6 +121,7 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 
 ### Prerequisites
 
+Type the following commands in the terminal to install the required dependencies:-
 ```
 sudo apt-get install ros-noetic-jackal-simulator ros-noetic-jackal-navigation
 sudo apt-get install ros-noetic-jackal-*
@@ -133,62 +134,83 @@ sudo apt-get install ros-noetic-geographic-info
 sudo apt-get install ros-noetic-robot-localization
 sudo apt-get install ros-noetic-twist-mux
 sudo apt-get install ros-noetic-pointcloud-to-laserscan
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
-sudo apt-get install
 ```
-Insert all sudo apt commands here
 
 ### Installation
 PLEASE INSTALL ALL DEPENDENCIES ACCORDING TO THESE STEPS, 
 
-
 WE HAVE MADE HEAVY MODIFICATIONS IN THE DEPENDENCIES, WHICH WILL NOT BE REFLECTED UNLESS DOWNLOADED FROM THIS REPOSITORY.
-
 
 This includes melodic & kinetic packages which have been modified to be run on noetic systems.
 
-
-Insert git clone and catkin_make commands here
-(Might merge the above 2 subsections)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-## Usage
-Insert commands to run the program and explain how to run its features here.
-
-
-After going inside the workspace run
-```source devel/setup.bash
-   export JACKAL_LASER_3D=1
-   roslaunch jackal_velodyne gmapping_demo.launch
+Type the following commands in the terminal:-
+```
+cd
+git clone https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots
+cd ~/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/src
+git clone https://github.com/koide3/hdl_graph_slam
+git clone https://github.com/SMRT-AIST/fast_gicp.git --recursive
+cd ..
+catkin_make
+source ~/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/devel/setup.bash
 ```
 
 
-3D SLAM
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Usage
+Insert commands to run the program and explain how to run its features here.
+
+**TO RUN NAVIGATION**
+After going inside the workspace run
+```
+source devel/setup.bash
+export JACKAL_LASER_3D=1
+roslaunch jackal_velodyne gmapping_demo.launch
+```
+
+
+**TO RUN 3D SLAM**
+Step 1 : Type the following in Terminal 1:-
 ```
 roscore
 
 ```
+Step 2: Run 2D LiDAR mapping(shown above) in a different terminal
 
-
-Improve Record Command
+Step 3 : Open a new terminal and type the following:-
 ```
 rosparam set use_sim_time true
 rosbag record /mid/points
-osparam set use_sim_time true
+```
+Step 4 : Open a new terminal and type the following:-
+```
+rosparam set use_sim_time true
 roslaunch hdl_graph_slam hdl_graph_slam_501.launch
+```
+
+Step 5 : Open a new terminal and type the following:-
+```
 roscd hdl_graph_slam/rviz
 rviz -d hdl_graph_slam.rviz
+```
+
+Step 6 :  Open a new terminal and type the following:-
+```
+cd bagfiles
 rosrun rosbag topic_renamer.py /mid/points PleasE.bag /filtered_points FinalE.bag
-rosrun hdl_graph_slam bag_player.py hdl_501_filtered.bag
+rosrun hdl_graph_slam bag_player.py FinalE.bag
+```
+
+Step 7 :
+```
 rosservice call /hdl_graph_slam/save_map "resolution: 0.05 destination: '/full_path_directory/map.pcd'"
 ```
+
+
+Improve Record Command
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## How it works
 ![Compute Graph](https://media.discordapp.net/attachments/998910899693830146/998910998612291744/rosgraph.png?width=1386&height=515)
 The above is the compute graph excluding the 3D SLAM (since the mapping is only run once).

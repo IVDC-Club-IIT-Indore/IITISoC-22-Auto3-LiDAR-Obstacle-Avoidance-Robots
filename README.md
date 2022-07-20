@@ -18,7 +18,7 @@ LiDAR-based obstacle avoidance and dynamic tracking systems
 must be deployed with a robust decision-making architecture.
 
 **Specifications:**
-- Any 3D LiDAR may be used (_Ouster OS_ series or _Velodyne
+-  Any 3D LiDAR may be used (_Ouster OS_ series or _Velodyne
 Puck_).
 - Assume the robots are slow-moving.
 - A C++ based collision avoidance and planning module is

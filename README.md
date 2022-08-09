@@ -105,9 +105,9 @@ This was coupled with additions like rQT and rViz to visualize relevant data.
 
 ## LiDAR Model
 
-This selection was primarily to receive accurate simulation data alongside actually being able to run the simulation. The OS Ouster series involved LiDARs having up to 128 channels which weren't running on our Gazebo simulators. Due to our use case being a warehouse, 16 and 32 channel LiDARs can work very well.
+This selection was primarily to receive accurate simulation data as well as ensuring that the computation times were low. The OS Ouster series involved LiDARs having up to 128 channels which were slowing down the computation and were running at about 1-2 fps on our computers without even enabling the navigation stack. Due to our use case being a warehouse, 16 and 32 channel LiDARs were ideal.
 
-This ensures that our simulations can run on Gazebo. In the end, we selected VLP-16 due to the availability of some very cool datasets(like [this](https://github.com/TixiaoShan/Stevens-VLP16-Dataset)) and compatibility with our model and certain nodes shown ahead. [Might be improved if we get access to a good GPU]
+This ensures that our simulations can run on Gazebo. In the end, we selected VLP-16 due to the availability of some very cool datasets(like [this](https://github.com/TixiaoShan/Stevens-VLP16-Dataset)) and compatibility with our model and certain nodes shown ahead.
 
 ## Robot
 
@@ -324,7 +324,7 @@ Members must contribute as required and the person with the latest working versi
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=blueviolet&style=for-the-badge
 [forks-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/fork
-[stars-shield]: https://img.shields.io/packagist/stars/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=%230000FF&logoColor=%230000FF&style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=yellow&style=for-the-badge
 [stars-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/stargazers
 [issues-shield]: https://img.shields.io/github/issues-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=%23FF0000&style=for-the-badge
 [issues-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/issues

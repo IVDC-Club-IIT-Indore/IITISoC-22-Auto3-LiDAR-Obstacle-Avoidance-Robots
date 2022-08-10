@@ -229,18 +229,19 @@ The above is the compute graph excluding the 3D SLAM (since the mapping is only 
 
 After selection, we simulated the LiDAR using 4-5 methods and the official implementation of Velodyne LiDAR(jackal_velodyne) gave us the most customizable form through a .xacro file. Thus, we can simulate different LiDARs through this library but let's stick to the one decided above since we have its datasets for training for object avoidance.
 
-The Rviz configuration for the simulation was heavily modified to accurately plot the captured data and include the robot model.
+The Rviz configuration for the simulation was heavily modified to accurately plot the captured data including the robot model and its radius.
 
 ![Model](https://media.discordapp.net/attachments/998910899693830146/998914333956395119/rviz_screenshot_2022_07_19-16_57_55.png?width=666&height=629)
 
 While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case). Despite the focus of the problem statement being low computation obstacle avoidance, we wished to build a general purpose warehouse robot that can be modified for specific use cases.
 
-?????????????The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed.
+The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects. The radius of the vehicle has been modified to ensure that turns with slight elevations are handled smoothly.
 
-The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance(implementation after mid eval). 3D SLAM is used to map the 3D environment so that these maps are loaded into the system only upon reaching the destination which saves valuable computation time. These maps can also be used to generate 2D maps in case the warehouse has steps or other low-lying objects below the level of the 2D LIDAR. It can also be used to detect where a required good is placed and check for availability of space to keep a certain good.
-?????????????????????
+The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance(implementation after mid eval). 3D SLAM is used to map the 3D environment so that these maps are loaded into the system only upon reaching the destination which saves valuable computation time. These maps can also be used to generate 2D maps in case the warehouse has steps or other low-lying objects below the level of the 2D LIDAR. It is also essential for integration with warehouses using the HEBI Robotic Arm with this stack.
 
-As of now, we have implemented a 3D mapping algorithm and a people tracking algorithm. But haven't been able to test if it can detect people effectively because Gazebo doesn't give accurate collision models of the humans. But here's a demo of our 3D mapping:-
+Basically it is needed for any functions with the z axis involved(which is most of the work in a warehouse).
+
+We have also implemented a people tracking algorithm. But haven't been able to test if it can detect people effectively because Gazebo doesn't give accurate collision models of moving human actors. But here's a demo of our 3D mapping:-
 ![image](https://user-images.githubusercontent.com/105885452/179753612-eada1c57-8798-45d4-a697-1e37cf63d195.png)
 (Left) Gazebo Simulation
 (Right) Corresponding 3D map - The vehicle was displaced from the position shown in the simulation... the yellow lines at the bottom are the LiDAR lines falling on the ground generated at the "circled spots". A larger .bag file is required to generate larger maps, we've haven't moved much in this demo so the file is small.
@@ -250,6 +251,14 @@ The 3D data is recorded in a .bag file and then converted into a format that can
 Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments like the following:- (Many more .world files have been provided... modify line 7 in gmappingdemo.launch to try them)
 
 (Put gifs of rviz simulations of different world, maybe even only 3d data)
+
+========================================================================================
+Dynamic obstacle avoidance was clearly a challenging task even for relatively more experienced programmers. So we decided to look at cutting edge research in this field to understand the requirements and slowly developed an approach that we felt was fitting. Some of our major inspirations were as follows:-
+https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9649733
+https://arxiv.org/pdf/1706.09068.pdf
+
+It is clear that a robust framework was needed with a great deal of optimization of the current navigation stack. We also decided to add a dynamic layer that gives a greater inflation to dynamic obstacles based on their velocities.
+We did a lot more research before settling on TEB local planner. The plugin allowed us to customize the navigation stack in real time which greatly simplified the process. It also provided a great framework for adding additional layers wherein we added a dynamic obstacles layer.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -261,7 +270,6 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 - [x] 3D Object Tracking
 - [x] Improved Path Planning using C++ code
 - [ ] Simplifying Installation Process (.bash files? , adding to repo?, use the src file properly and .bashrc)
-- [ ] Remove 2D LiDAR
 
 <div id="ideas"></div>
 
@@ -270,8 +278,6 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 (random thoughts... might implement if we have time)
 
 Note: Members(or mentors) can add any wacky ideas here through pull requests. If everyone agrees to implement it, we'll switch it to finalized.
-
-- Provide set-up for IRL Jackal Installation
 
 - Use person identification to make a person follower robot so that it can carry those boxes around... or do something similar to [MIT's Jackal](https://www.youtube.com/watch?v=CK1szio7PyA)
 

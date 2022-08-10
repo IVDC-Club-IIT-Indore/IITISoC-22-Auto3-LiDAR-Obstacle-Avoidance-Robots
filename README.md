@@ -103,13 +103,13 @@ This was coupled with additions like rQT and rViz to visualize relevant data.
 
 - Multiple command lines make execution of these statements much easier.
 
-## LiDAR Model
+### LiDAR Model
 
 This selection was primarily to receive accurate simulation data as well as ensuring that the computation times were low. The OS Ouster series involved LiDARs having up to 128 channels which were slowing down the computation and were running at about 1-2 fps on our computers without even enabling the navigation stack. Due to our use case being a warehouse, 16 and 32 channel LiDARs were ideal.
 
 This ensures that our simulations can run on Gazebo. In the end, we selected VLP-16 due to the availability of some very cool datasets(like [this](https://github.com/TixiaoShan/Stevens-VLP16-Dataset)) and compatibility with our model and certain nodes shown ahead.
 
-## Robot
+### Robot
 
 We split into 2 teams and tried to implement LiDARs on certain candidate models like Turtlebot3, Turtlebot3 Friends Series and Clearpath Jackal. Despite looking very interesting, the Turtlebot3 Friends Series either didn't have space for LiDARs or were not fit for work in a warehouse environment.
 
@@ -134,7 +134,11 @@ sudo apt-get install ros-noetic-geographic-info
 sudo apt-get install ros-noetic-robot-localization
 sudo apt-get install ros-noetic-twist-mux
 sudo apt-get install ros-noetic-pointcloud-to-laserscan
+sudo apt-get install ros-noetic-teb-local-planner
+rosdep install teb_local_planner
+sudo apt-get install ros-noetic-stage-ros
 ```
+http://wiki.ros.org/teb_local_planner/Tutorials/Configure%20and%20run%20Robot%20Navigation
 
 ### Installation
 PLEASE INSTALL ALL DEPENDENCIES ACCORDING TO THESE STEPS, 
@@ -227,13 +231,14 @@ The Rviz configuration for the simulation was heavily modified to accurately plo
 
 ![Model](https://media.discordapp.net/attachments/998910899693830146/998914333956395119/rviz_screenshot_2022_07_19-16_57_55.png?width=666&height=629)
 
-While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case).
+While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case). Despite the focus of the problem statement being low computation obstacle avoidance, we wished to build a general purpose warehouse robot that can be modified for specific use cases.
 
-The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed. (Navigation with moving objects in Gazebo will be tested after mid evaluation).
+?????????????The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects, even if they aren't part of the original map adding it to an instance of the map which is later destroyed.
 
 The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance(implementation after mid eval). 3D SLAM is used to map the 3D environment so that these maps are loaded into the system only upon reaching the destination which saves valuable computation time. These maps can also be used to generate 2D maps in case the warehouse has steps or other low-lying objects below the level of the 2D LIDAR. It can also be used to detect where a required good is placed and check for availability of space to keep a certain good.
+?????????????????????
 
-As of now, we have implemented a 3D mapping algorithm and a people tracking algorithm. But haven't been able to test if it can detect people effectively due to an acute shortage of people in Gazebo. But here's a demo of our 3D mapping:-
+As of now, we have implemented a 3D mapping algorithm and a people tracking algorithm. But haven't been able to test if it can detect people effectively because Gazebo doesn't give accurate collision models of the humans. But here's a demo of our 3D mapping:-
 ![image](https://user-images.githubusercontent.com/105885452/179753612-eada1c57-8798-45d4-a697-1e37cf63d195.png)
 (Left) Gazebo Simulation
 (Right) Corresponding 3D map - The vehicle was displaced from the position shown in the simulation... the yellow lines at the bottom are the LiDAR lines falling on the ground generated at the "circled spots". A larger .bag file is required to generate larger maps, we've haven't moved much in this demo so the file is small.
@@ -245,19 +250,20 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 (Put gifs of rviz simulations of different world, maybe even only 3d data)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Roadmap
 
 ### Finalized
 - [x] 3D SLAM Implementation (We finished it before time... might refine)
 - [x] Person Identification (Implemented but hasn't been tested)
-- [ ] 3D Object Tracking
-- [ ] Improved Path Planning using C++ code
+- [x] 3D Object Tracking
+- [x] Improved Path Planning using C++ code
 - [ ] Simplifying Installation Process (.bash files? , adding to repo?, use the src file properly and .bashrc)
+- [ ] Remove 2D LiDAR
 
 <div id="ideas"></div>
 
 ### Ideas
-
 
 (random thoughts... might implement if we have time)
 

@@ -305,9 +305,7 @@ Note: Members(or mentors) can add any wacky ideas here through pull requests. If
 
 On the off chance that someone outside IIT Indore finds this repository, kindly refrain from sending pull requests or code till the contest is over. You are free to ask about the implementation of the project or any errors encountered during installation. Feel free to contact any of us.
 
-Members must contribute as required and the person with the latest working version or test machine will upload the code and send a pull request to the mentors. 
-
-(Note: I didn't know what to write in this section so I just wrote what I thought was relevant. If the mentors have any objections kindly let us know. If not, we'll remove this bracket during the next README update)
+Members must contribute as required and the person with the latest working version or test machine will upload the code and send a pull request to the mentors.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

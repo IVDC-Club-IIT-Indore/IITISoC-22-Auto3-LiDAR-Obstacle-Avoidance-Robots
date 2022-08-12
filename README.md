@@ -1,5 +1,3 @@
-MODIFY CONFIG OF GMAPPING
-
 <div id="top"></div>
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -119,21 +117,6 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Local Planner
-Teb_local_planner installation and implementation was made with teb_local_planner wiki as the reference tutorials.
-We have uploaded the updated parameters in jackal_navigation, hence you need not tweak any reconfiguration files as instructed in the tutorials.
-Changes have been made to spatial states and temporal ones, for trajectory optimisation.
-
-For 2D navigation 
-we have made changes to base_local_planner.yaml for setup purposes.
-Our robot marks moving obstacles and also creates safety region to avoid which is costmap
-
-Reason for 2D costmap: less computational to process over 3D and meets requirement
-
-2D Costmap(since our robot is landbased) : Its basically like creating a safe zone for the robot to travel. You wouldn’t want to go too close and collide would you?
-
-Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one
-
 ## Getting Started
 
 ### Prerequisites
@@ -154,8 +137,6 @@ sudo apt-get install ros-noetic-pointcloud-to-laserscan
 sudo apt-get install ros-noetic-teb-local-planner
 rosdep install teb_local_planner
 sudo apt-get install ros-noetic-stage-ros
-sudo apt-get install ros-noetic-teb-local-planner
-rosdep install teb_local_planner
 ```
 Reference:
 http://wiki.ros.org/teb_local_planner/Tutorials
@@ -253,6 +234,8 @@ The Rviz configuration for the simulation was heavily modified to accurately plo
 
 While capturing data, it was clear that we need a high-speed navigation system. 3D maps require a large amount of computation to navigate while also being sort of redundant for AGVs which aren't moving in the z direction(like our work case). Despite the focus of the problem statement being low computation obstacle avoidance, we wished to build a general purpose warehouse robot that can be modified for specific use cases.
 
+It further required customized PointCloud filtering for each individual warehouse case which is against the vision of the project to make a generalized robot(also very cumbersome).
+
 The 2D LIDAR at the front is setup for continous navigation of its surrounding as well as 2D mapping. We will be relying on 2D navigation maps to reduce computation needed to navigate the environment. This allows us to use the 2D navigation of the Jackal system which avoids all objects. The radius of the vehicle has been modified to ensure that turns with slight elevations are handled smoothly.
 
 The 3D LiDAR is a very powerful tool that will be useful for object detection, recognition and avoidance(implementation after mid eval). 3D SLAM is used to map the 3D environment so that these maps are loaded into the system only upon reaching the destination which saves valuable computation time. These maps can also be used to generate 2D maps in case the warehouse has steps or other low-lying objects below the level of the 2D LIDAR. It is also essential for integration with warehouses using the HEBI Robotic Arm with this stack.
@@ -274,6 +257,18 @@ Thus, a combination 2D and 3D data are used to track and navigate any area. Desp
 Dynamic obstacle avoidance was clearly a challenging task even for relatively more experienced programmers. So we decided to look at cutting edge research in this field to understand the requirements and slowly developed an approach that we felt was fitting. Some of our major inspirations were as follows:-
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9649733
 https://arxiv.org/pdf/1706.09068.pdf
+Among many of the research papers we read, one stood out among the rest... [this](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8787346)
+
+We were also inspired by F1/10th cars which also require extremely fast computation and operate in similar ways.
+
+Changes have been made to spatial states and temporal ones, for trajectory optimisation. We have made changes to base_local_planner.yaml for setup and inclusion of dynamic obstacles.
+Our robot marks moving obstacles and also creates safety region to avoid which is costmap
+
+Reason for 2D costmap: less computational to process over 3D and meets requirement
+
+2D Costmap(since our robot is landbased) : Its basically like creating a safe zone for the robot to travel. You wouldn’t want to go too close and collide would you?
+
+Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one
 
 It is clear that a robust framework was needed with a great deal of optimization of the current navigation stack. We also decided to add a dynamic layer that gives a greater inflation to dynamic obstacles based on their velocities.
 We did a lot more research before settling on TEB local planner. The plugin allowed us to customize the navigation stack in real time which greatly simplified the process. It also provided a great framework for adding additional layers wherein we added a dynamic obstacles layer.

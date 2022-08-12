@@ -249,11 +249,8 @@ We have also implemented a people tracking algorithm. But haven't been able to t
 
 The 3D data is recorded in a .bag file and then converted into a format that can be accepeted by the 3D slam algorithm.
 
-Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments like the following:- (Many more .world files have been provided... modify line 7 in gmappingdemo.launch to try them)
+Thus, a combination 2D and 3D data are used to track and navigate any area. Despite having a limited use case, we have also tested it in more challenging environments(provided in presentation).
 
-(Put gifs of rviz simulations of different world, maybe even only 3d data)
-
-========================================================================================
 Dynamic obstacle avoidance was clearly a challenging task even for relatively more experienced programmers. So we decided to look at cutting edge research in this field to understand the requirements and slowly developed an approach that we felt was fitting. Some of our major inspirations were as follows:-
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9649733
 https://arxiv.org/pdf/1706.09068.pdf
@@ -279,7 +276,9 @@ We did a lot more research before settling on TEB local planner. The plugin allo
 - [x] Person Identification (Implemented but hasn't been tested)
 - [x] 3D Object TrackingWe were also inspired by F1/10th cars which also require extremely fast computation and operate in similar ways.
 - [x] Improved Path Planning using C++ code
-- [ ] Simplifying Installation Process (.bash files? , adding to repo?, use the src file properly and .bashrc)
+- [ ]  Use person identification to make a person follower robot so that it can carry those boxes around
+- [ ]  Use person identification to make a person follower robot so that it can carry those boxes around
+
 
 <div id="ideas"></div>
 

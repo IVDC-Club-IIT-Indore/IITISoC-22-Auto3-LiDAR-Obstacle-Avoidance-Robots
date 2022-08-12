@@ -123,7 +123,7 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 
 Type the following commands in the terminal to install the required dependencies:-
 ```
-sudo apt-get install ros-noetic-jackal-simulator ros-noetic-jackal-navigation
+sudo apt-get install ros-noetic-jackal-simulator
 sudo apt-get install ros-noetic-jackal-*
 sudo apt-get install ros-noetic-velodyne-*
 sudo apt-get install ros-noetic-geodesy ros-noetic-pcl-ros ros-noetic-nmea-msgs ros-noetic-libg2o
@@ -138,8 +138,7 @@ sudo apt-get install ros-noetic-teb-local-planner
 rosdep install teb_local_planner
 sudo apt-get install ros-noetic-stage-ros
 ```
-Reference:
-http://wiki.ros.org/teb_local_planner/Tutorials
+Kindly install the robotic arm from here if required in your warehouse: http://wiki.ros.org/hebi_cpp_api_examples/ClearpathJackal
 
 ### Installation
 PLEASE INSTALL ALL DEPENDENCIES ACCORDING TO THESE STEPS, 
@@ -171,7 +170,7 @@ source ~/IITISOC_ws/devel/setup.bash
 ## Usage
 Insert commands to run the program and explain how to run its features here.
 
-**TO RUN NAVIGATION**
+**TO RUN 2D SLAM AND NAVIGATION**
 
 After going inside the workspace run
 ```
@@ -179,6 +178,9 @@ cd IITISOC_ws
 source devel/setup.bash
 export JACKAL_LASER_3D=1
 roslaunch jackal_velodyne gmapping_demo.launch
+sudo chmod 777 /opt/ros/noetic/share/jackal_navigation/maps
+cd /opt/ros/noetic/share/jackal_navigation/maps
+rosrun map_server map_saver -f mymap
 ```
 
 

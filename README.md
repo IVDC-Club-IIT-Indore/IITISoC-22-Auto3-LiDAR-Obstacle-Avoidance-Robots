@@ -258,15 +258,12 @@ Dynamic obstacle avoidance was clearly a challenging task even for relatively mo
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9649733
 https://arxiv.org/pdf/1706.09068.pdf
 Among many of the research papers we read, one stood out among the rest... [this](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8787346)
+TEB Local Planner is clearly the most accurate for our use case.
 
-We were also inspired by F1/10th cars which also require extremely fast computation and operate in similar ways.
+We were also inspired by F1/10th cars which also require extremely fast computation and operate in similar algorithms and configurations.
 
 Changes have been made to spatial states and temporal ones, for trajectory optimisation. We have made changes to base_local_planner.yaml for setup and inclusion of dynamic obstacles.
-Our robot marks moving obstacles and also creates safety region to avoid which is costmap
-
-Reason for 2D costmap: less computational to process over 3D and meets requirement
-
-2D Costmap(since our robot is landbased) : Its basically like creating a safe zone for the robot to travel. You wouldn’t want to go too close and collide would you?
+In simple terms, we added a dynamic obstacle layer which provides a custom inflation based on their movement. TEB local planner allowed us to change these configuration parameters during runtime which helped in quick testing of new ideas for optimization and improvement of the path.
 
 Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one
 
@@ -280,7 +277,7 @@ We did a lot more research before settling on TEB local planner. The plugin allo
 ### Finalized
 - [x] 3D SLAM Implementation (We finished it before time... might refine)
 - [x] Person Identification (Implemented but hasn't been tested)
-- [x] 3D Object Tracking
+- [x] 3D Object TrackingWe were also inspired by F1/10th cars which also require extremely fast computation and operate in similar ways.
 - [x] Improved Path Planning using C++ code
 - [ ] Simplifying Installation Process (.bash files? , adding to repo?, use the src file properly and .bashrc)
 

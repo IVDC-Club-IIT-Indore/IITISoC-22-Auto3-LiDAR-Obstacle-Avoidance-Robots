@@ -119,6 +119,21 @@ Out of the remaining models, **Clearpath Jackal** was clearly suited for higher 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Local Planner
+Teb_local_planner installation and implementation was made with teb_local_planner wiki as the reference tutorials.
+We have uploaded the updated parameters in jackal_navigation, hence you need not tweak any reconfiguration files as instructed in the tutorials.
+Changes have been made to spatial states and temporal ones, for trajectory optimisation.
+
+For 2D navigation 
+we have made changes to base_local_planner.yaml for setup purposes.
+Our robot marks moving obstacles and also creates safety region to avoid which is costmap
+
+Reason for 2D costmap: less computational to process over 3D and meets requirement
+
+2D Costmap(since our robot is landbased) : Its basically like creating a safe zone for the robot to travel. You wouldn’t want to go too close and collide would you?
+
+Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one
+
 ## Getting Started
 
 ### Prerequisites
@@ -139,8 +154,11 @@ sudo apt-get install ros-noetic-pointcloud-to-laserscan
 sudo apt-get install ros-noetic-teb-local-planner
 rosdep install teb_local_planner
 sudo apt-get install ros-noetic-stage-ros
+sudo apt-get install ros-noetic-teb-local-planner
+rosdep install teb_local_planner
 ```
-http://wiki.ros.org/teb_local_planner/Tutorials/Configure%20and%20run%20Robot%20Navigation
+Reference:
+http://wiki.ros.org/teb_local_planner/Tutorials
 
 ### Installation
 PLEASE INSTALL ALL DEPENDENCIES ACCORDING TO THESE STEPS, 

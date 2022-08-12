@@ -1,0 +1,21 @@
+<?xml version="1.0">
+<sdf version="1.5">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <model name="scaraArm">
+      <pose>0 0 0.5 0 0 0</pose>
+      <include>
+        <uri>model://A-2084-01</uri>
+      </include>
+    </model>
+  </world>
+</sdf>

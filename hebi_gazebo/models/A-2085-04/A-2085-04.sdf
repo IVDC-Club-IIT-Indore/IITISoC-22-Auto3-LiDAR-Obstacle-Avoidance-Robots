@@ -1,0 +1,827 @@
+<sdf version='1.6'>
+  <model name='A-2085-04'>
+    <link name='Arm/J1_base/INPUT_INTERFACE'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.0142 -0.0031 0.0165 0 -0 0</pose>
+        <mass>0.335</mass>
+        <inertia>
+          <ixx>0.00015</ixx>
+          <ixy>3.41e-05</ixy>
+          <ixz>1.18e-05</ixz>
+          <iyy>0.000255</iyy>
+          <iyz>2.29e-06</iyz>
+          <izz>0.00035</izz>
+        </inertia>
+      </inertial>
+      <collision name='Arm/J1_base/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='Arm/J1_base/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='world_joint' type='fixed'>
+      <child>Arm/J1_base/INPUT_INTERFACE</child>
+      <parent>world</parent>
+    </joint>
+    <link name='shoulder_bracket/INPUT_INTERFACE'>
+      <pose frame=''>0 0 0.031 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 -0.01875 0.0275 0 -0 0</pose>
+        <mass>0.215</mass>
+        <inertia>
+          <ixx>0.0003096</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0003096</iyy>
+          <iyz>0</iyz>
+          <izz>0.0003096</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_bracket/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0.005 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/PM-2149-01.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='shoulder_bracket/INPUT_INTERFACE_collision_1'>
+        <pose frame=''>0 -0.03 0.04 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/PM-2150-01R.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='shoulder_bracket/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0.005 1.5708 -0 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/PM-2149-01.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='shoulder_bracket/INPUT_INTERFACE_visual_1'>
+        <pose frame=''>0 -0.03 0.04 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/PM-2150-01R.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='Arm/J1_base' type='revolute'>
+      <child>shoulder_bracket/INPUT_INTERFACE</child>
+      <parent>Arm/J1_base/INPUT_INTERFACE</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='Arm/J2_shoulder/INPUT_INTERFACE'>
+      <pose frame=''>0 -0.0375 0.086 1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.0142 -0.0031 0.0165 0 -0 0</pose>
+        <mass>0.36</mass>
+        <inertia>
+          <ixx>0.00015</ixx>
+          <ixy>3.41e-05</ixy>
+          <ixz>1.18e-05</ixz>
+          <iyy>0.000255</iyy>
+          <iyz>2.29e-06</iyz>
+          <izz>0.00035</izz>
+        </inertia>
+      </inertial>
+      <collision name='Arm/J2_shoulder/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='Arm/J2_shoulder/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='shoulder_bracket/OUTPUT_INTERFACE' type='fixed'>
+      <child>Arm/J2_shoulder/INPUT_INTERFACE</child>
+      <parent>shoulder_bracket/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='shoulder_elbow/INPUT_INTERFACE'>
+      <pose frame=''>0 -0.0685 0.086 1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.1625 0 0.02 0 -0 0</pose>
+        <mass>0.402</mass>
+        <inertia>
+          <ixx>0</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00353844</iyy>
+          <iyz>0</iyz>
+          <izz>0.00353844</izz>
+        </inertia>
+      </inertial>
+      <collision name='shoulder_elbow/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2038-02.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='shoulder_elbow/INPUT_INTERFACE_collision_1'>
+        <pose frame=''>0.1625 0 0.02 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2996</length>
+            <radius>0.016</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='shoulder_elbow/INPUT_INTERFACE_collision_2'>
+        <pose frame=''>0.325 -0 0 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2039-02.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='shoulder_elbow/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2038-02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='shoulder_elbow/INPUT_INTERFACE_visual_1'>
+        <pose frame=''>0.1625 0 0.02 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2996</length>
+            <radius>0.016</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='shoulder_elbow/INPUT_INTERFACE_visual_2'>
+        <pose frame=''>0.325 -0 0 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2039-02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='Arm/J2_shoulder' type='revolute'>
+      <child>shoulder_elbow/INPUT_INTERFACE</child>
+      <parent>Arm/J2_shoulder/INPUT_INTERFACE</parent>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='Arm/J3_elbow/INPUT_INTERFACE'>
+      <pose frame=''>0.325 -0.0685 0.086 -1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.0142 -0.0031 0.0165 0 -0 0</pose>
+        <mass>0.335</mass>
+        <inertia>
+          <ixx>0.00015</ixx>
+          <ixy>3.41e-05</ixy>
+          <ixz>1.18e-05</ixz>
+          <iyy>0.000255</iyy>
+          <iyz>2.29e-06</iyz>
+          <izz>0.00035</izz>
+        </inertia>
+      </inertial>
+      <collision name='Arm/J3_elbow/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='Arm/J3_elbow/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='shoulder_elbow/OUTPUT_JOINT' type='fixed'>
+      <child>Arm/J3_elbow/INPUT_INTERFACE</child>
+      <parent>shoulder_elbow/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='elbow_wrist/INPUT_INTERFACE'>
+      <pose frame=''>0.325 -0.0375 0.086 -1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.1625 0 0.02 0 -0 0</pose>
+        <mass>0.402</mass>
+        <inertia>
+          <ixx>0</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00353844</iyy>
+          <iyz>0</iyz>
+          <izz>0.00353844</izz>
+        </inertia>
+      </inertial>
+      <collision name='elbow_wrist/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2038-02.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='elbow_wrist/INPUT_INTERFACE_collision_1'>
+        <pose frame=''>0.1625 0 0.02 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2996</length>
+            <radius>0.016</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='elbow_wrist/INPUT_INTERFACE_collision_2'>
+        <pose frame=''>0.325 -0 0 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2039-02.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='elbow_wrist/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2038-02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='elbow_wrist/INPUT_INTERFACE_visual_1'>
+        <pose frame=''>0.1625 0 0.02 3.14159 1.57079 3.14159</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2996</length>
+            <radius>0.016</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='elbow_wrist/INPUT_INTERFACE_visual_2'>
+        <pose frame=''>0.325 -0 0 3.14159 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://meshes/A-2039-02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='Arm/J3_elbow' type='revolute'>
+      <child>elbow_wrist/INPUT_INTERFACE</child>
+      <parent>Arm/J3_elbow/INPUT_INTERFACE</parent>
+      <axis>
+        <xyz>0 1 -0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='Arm/J4_wrist/INPUT_INTERFACE'>
+      <pose frame=''>0.65 -0.0375 0.086 1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>-0.0142 -0.0031 0.0165 0 -0 0</pose>
+        <mass>0.315</mass>
+        <inertia>
+          <ixx>0.00015</ixx>
+          <ixy>3.41e-05</ixy>
+          <ixz>1.18e-05</ixz>
+          <iyy>0.000255</iyy>
+          <iyz>2.29e-06</iyz>
+          <izz>0.00035</izz>
+        </inertia>
+      </inertial>
+      <collision name='Arm/J4_wrist/INPUT_INTERFACE_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='Arm/J4_wrist/INPUT_INTERFACE_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>model://meshes/X5.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='elbow_wrist/OUTPUT_JOINT' type='fixed'>
+      <child>Arm/J4_wrist/INPUT_INTERFACE</child>
+      <parent>elbow_wrist/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='HEBI_SIM/Arm/J4_wrist/X5_1'>
+      <pose frame=''>0.65 -0.0375 0.086 1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='HEBI_SIM/Arm/J4_wrist/X5_1_visual'>
+        <pose frame=''>-0.03 0 0.02 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.001</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='HEBI_SIM_JOINT/Arm/J4_wrist' type='fixed'>
+      <child>HEBI_SIM/Arm/J4_wrist/X5_1</child>
+      <parent>Arm/J4_wrist/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='HEBI_SIM/Arm/J3_elbow/X5_4'>
+      <pose frame=''>0.325 -0.0685 0.086 -1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='HEBI_SIM/Arm/J3_elbow/X5_4_visual'>
+        <pose frame=''>-0.03 0 0.02 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.001</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='HEBI_SIM_JOINT/Arm/J3_elbow' type='fixed'>
+      <child>HEBI_SIM/Arm/J3_elbow/X5_4</child>
+      <parent>Arm/J3_elbow/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='HEBI_SIM/Arm/J2_shoulder/X5_9'>
+      <pose frame=''>0 -0.0375 0.086 1.5708 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='HEBI_SIM/Arm/J2_shoulder/X5_9_visual'>
+        <pose frame=''>-0.03 0 0.02 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.001</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='HEBI_SIM_JOINT/Arm/J2_shoulder' type='fixed'>
+      <child>HEBI_SIM/Arm/J2_shoulder/X5_9</child>
+      <parent>Arm/J2_shoulder/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='HEBI_SIM/Arm/J1_base/X5_4'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name='HEBI_SIM/Arm/J1_base/X5_4_visual'>
+        <pose frame=''>-0.03 0 0.02 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.001</radius>
+          </sphere>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='HEBI_SIM_JOINT/Arm/J1_base' type='fixed'>
+      <child>HEBI_SIM/Arm/J1_base/X5_4</child>
+      <parent>Arm/J1_base/INPUT_INTERFACE</parent>
+      <axis>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <static>0</static>
+    <plugin name='hebi_gazebo_plugin' filename='libhebi_gazebo_plugin.so'/>
+  </model>
+</sdf>

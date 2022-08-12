@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" version="1.1.0" name="A-2084-01">
+  <!-- HEBI A-2084-01 Arm Kit -->
+  <xacro:include filename="$(find hebi_description)/urdf/hebi.xacro"/>
+
+  <gazebo>
+    <plugin name="hebi_gazebo_plugin" filename="libhebi_gazebo_plugin.so">
+      <actuators>
+        <actuator family="Arm" name="J1_base"     type="X5_4" mocked="false"/>
+        <actuator family="Arm" name="J2_shoulder" type="X5_9" mocked="false"/>
+        <actuator family="Arm" name="J3_elbow"    type="X5_4" mocked="false"/>
+        <actuator family="Arm" name="J4_wrist"    type="X5_1" mocked="true"/>
+      </actuators>
+    </plugin>
+  </gazebo>
+
+  <xacro:arg name="hebi_base_frame" default="world"/>
+  <xacro:property name="hebi_base_frame" value="$(arg hebi_base_frame)"/>
+  <xacro:if value="${hebi_base_frame == 'world'}">
+    <link name="$(arg hebi_base_frame)"/>
+  </xacro:if>
+  <joint name="$(arg hebi_base_frame)_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="$(arg hebi_base_frame)"/>
+    <child link="Arm/J1_base/INPUT_INTERFACE"/>
+  </joint>
+  <xacro:actuator type="X5_4" name="Arm/J1_base" child="shoulder_bracket"/>
+  <xacro:bracket type="X5HeavyRightOutside" name="shoulder_bracket" child="Arm/J2_shoulder"/>
+  <xacro:actuator type="X5_9" name="Arm/J2_shoulder" child="shoulder_elbow"/>
+  <xacro:link type="X5" extension="0.325" twist="${pi/2}" name="shoulder_elbow" child="Arm/J3_elbow"/>
+  <xacro:actuator type="X5_4" name="Arm/J3_elbow" child="elbow_wrist"/>
+  <xacro:link type="X5" extension="0.325" twist="0" name="elbow_wrist" child="Arm/J4_wrist"/>
+  <xacro:actuator type="X5_1" name="Arm/J4_wrist" child="end_effector"/>
+  <xacro:gripper type="Custom" name="end_effector" mass="0.0"/>
+</robot>

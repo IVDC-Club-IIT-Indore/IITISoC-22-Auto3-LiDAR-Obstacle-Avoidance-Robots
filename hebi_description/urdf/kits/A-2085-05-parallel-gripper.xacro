@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" version="1.2.0" name="A-2085-05-parallel-gripper">
+  <!-- HEBI A-2085-05-parallel-gripper Arm Kit -->
+  <xacro:include filename="$(find hebi_description)/urdf/hebi.xacro"/>
+
+  <gazebo>
+    <plugin name="hebi_gazebo_plugin" filename="libhebi_gazebo_plugin.so">
+      <actuators>
+        <actuator family="Arm" name="J1_base"     type="X8_9" mocked="false"/>
+        <actuator family="Arm" name="J2_shoulder" type="X8_16" mocked="false"/>
+        <actuator family="Arm" name="J3_elbow"    type="X8_9" mocked="false"/>
+        <actuator family="Arm" name="J4_wrist1"    type="X5_1" mocked="true"/>
+        <actuator family="Arm" name="J5_wrist2"    type="X5_1" mocked="true"/>
+      </actuators>
+    </plugin>
+  </gazebo>
+
+  <xacro:arg name="hebi_base_frame" default="world"/>
+  <xacro:property name="hebi_base_frame" value="$(arg hebi_base_frame)"/>
+  <xacro:if value="${hebi_base_frame == 'world'}">
+    <link name="$(arg hebi_base_frame)"/>
+  </xacro:if>
+  <joint name="$(arg hebi_base_frame)_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="$(arg hebi_base_frame)"/>
+    <child link="Arm/J1_base/INPUT_INTERFACE"/>
+  </joint>
+  <xacro:actuator type="X8_9" name="Arm/J1_base" child="shoulder_bracket"/>
+  <xacro:bracket type="X5HeavyRightOutside" name="shoulder_bracket" child="Arm/J2_shoulder"/>
+  <xacro:actuator type="X8_16" name="Arm/J2_shoulder" child="shoulder_elbow"/>
+  <xacro:link type="X5" extension="0.325" twist="${pi}" name="shoulder_elbow" child="Arm/J3_elbow"/>
+  <xacro:actuator type="X8_9" name="Arm/J3_elbow" child="elbow_wrist1"/>
+  <xacro:link type="X5" extension="0.325" twist="${pi}" name="elbow_wrist1" child="Arm/J4_wrist1"/>
+  <xacro:actuator type="X5_1" name="Arm/J4_wrist1" child="wrist2_bracket"/>
+  <xacro:bracket type="X5LightRight" name="wrist2_bracket" child="Arm/J5_wrist2"/>
+  <xacro:actuator type="X5_1" name="Arm/J5_wrist2" child="end_effector"/>
+  <xacro:gripper type="X5Parallel" name="end_effector"/>
+</robot>

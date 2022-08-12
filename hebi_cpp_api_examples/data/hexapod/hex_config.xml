@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<hex_config name="config_root">
+  <body mass="21.00">
+    <leg angle="30.0"   offset="0.2375" flip="false"/>
+    <leg angle="-30.0"  offset="0.2375" flip="false"/>
+    <leg angle="90.0"   offset="0.1875" flip="false"/>
+    <leg angle="-90.0"  offset="0.1875" flip="false"/>
+    <leg angle="150.0"  offset="0.2375" flip="false"/>
+    <leg angle="-150.0" offset="0.2375" flip="false"/>
+  </body>
+  <stance radius="0.55" body_height="0.21" min_foot_height="-0.3" max_foot_height="-0.05" max_shift_radius="0.18"/>
+  <step_threshold rotate="0.05" shift="0.03"/>
+  <logging enabled="true" low_frequency_hz="5" high_frequency_hz="200"/>
+</hex_config>

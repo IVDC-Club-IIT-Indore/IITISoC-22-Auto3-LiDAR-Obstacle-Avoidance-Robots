@@ -1,0 +1,7 @@
+<launch>
+  <rosparam ns="base" command="load" file="$(find hebi_cpp_api_examples)/config/tready_base_params.yaml"/>
+
+  <!-- Robot components -->
+  <node ns="base" pkg="hebi_cpp_api_examples" type="treaded_base_node" name="treaded_base_node" output="screen" required="true"/>
+
+</launch>

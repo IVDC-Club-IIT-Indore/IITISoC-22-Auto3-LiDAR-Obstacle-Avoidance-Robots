@@ -1,0 +1,22 @@
+<launch>
+  <!--
+
+  This launch file brings up the HEBI arm node to move a
+  physical arm.
+
+  You should specify `arm_type` as a launch file parameter
+  (defaults to the HEBI 6-DoF arm A-2085-06).  This should
+  match a config parameters file located at
+  `config/<arm_type>_params.yaml`.
+
+  -->
+
+  <!-- specify type of HEBI arm -->
+  <arg name="arm_type" default="A-2085-06" />
+
+  <!-- Parameters for the module names, gains, hrdf, etc -->
+  <arg name="config_dir" default="$(find hebi_cpp_api_examples)/config" />
+  <rosparam file="$(arg config_dir)/$(arg arm_type)_params.yaml" command="load" />
+
+  <node pkg="hebi_cpp_api_examples" type="arm_node" name="arm_node" output="screen"/>
+</launch>

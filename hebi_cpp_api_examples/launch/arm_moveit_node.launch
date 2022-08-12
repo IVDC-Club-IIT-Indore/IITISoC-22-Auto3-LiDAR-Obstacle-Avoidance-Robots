@@ -1,0 +1,73 @@
+<launch>
+
+  <!--
+
+  HEBI MoveIt! node config file
+
+  The content of this is largely taken from the
+  standard MoveIt launch files, but is configured to
+  use the `arm_moveit_node` in the `hebi_cpp_api_examples`
+  package to move a physical arm.
+
+  You should specify `arm_type` as a launch file parameter
+  (defaults to the HEBI 6-DoF arm A-2085-06).  This should
+  match a moveit config that is visible as a package with
+  name `hebi_<arm_type>_moveit_config`, as well as a config
+  parameters file located at `config/<arm_type>_params.yaml`.
+
+  -->
+
+  <!-- specify type of HEBI arm -->
+  <arg name="arm_type" default="A-2085-06" />
+
+  <!-- specify gripper type (e.g., 'parallel' or 'none') -->
+  <arg name="gripper_type" default="none" />
+
+  <!-- The folder containing configs for arm and (optionally) gripper -->
+  <arg name="config_dir" default="$(find hebi_cpp_api_examples)/config" />
+
+  <!-- The moveit configuration matching the above args -->
+  <arg name="moveit_arm_type" value="$(eval (arm_type.lower() + '-parallel-gripper') if gripper_type == 'parallel' else arm_type.lower())"/>
+
+  <!-- specify the planning pipeline -->
+  <arg name="pipeline" default="ompl" />
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Run rviz by default-->
+  <arg name="gui" default="true" />
+
+  <arg name="load_robot_description" default="true" />
+
+  <!-- Parameters for the module names, gains, hrdf, etc -->
+  <rosparam file="$(arg config_dir)/$(arg arm_type)_params.yaml" command="load" />
+
+  <node pkg="hebi_cpp_api_examples" type="arm_moveit_node" name="arm_moveit_node" output="screen"/>
+
+  <!-- Start gripper node as appropriate -->
+  <group ns="hand_controller" if="$(eval gripper_type == 'parallel')">
+    <rosparam file="$(arg config_dir)/$(arg gripper_type)-gripper_params.yaml" command="load" />
+    <node pkg="hebi_cpp_api_examples" type="gripper_moveit_node" name="moveit_gripper_node" output="screen" required="true">
+      <remap from="joint_states" to="/joint_states" />
+    </node>
+  </group>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- Run the main MoveIt! executable -->
+  <include file="$(eval find('hebi_' + moveit_arm_type + '_moveit_config') + '/launch/move_group.launch')">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="pipeline" value="$(arg pipeline)"/>
+    <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+  </include>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include if="$(arg gui)" file="$(eval find('hebi_' + moveit_arm_type + '_moveit_config') + '/launch/moveit_rviz.launch')">
+    <arg name="rviz_config" value="$(eval find('hebi_' + moveit_arm_type + '_moveit_config') + '/launch/moveit.rviz')"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+</launch>

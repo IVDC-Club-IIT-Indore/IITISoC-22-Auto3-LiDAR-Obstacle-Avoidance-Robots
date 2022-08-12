@@ -1,0 +1,5 @@
+<launch>
+  <rosparam file="$(find hebi_cpp_api_examples)/config/omni_base_params.yaml" command="load" />
+
+  <node pkg="hebi_cpp_api_examples" type="omni_base_node" name="omni_base_node" />
+</launch>

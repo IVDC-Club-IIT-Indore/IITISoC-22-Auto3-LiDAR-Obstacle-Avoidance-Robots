@@ -1,0 +1,14 @@
+# Goal position (relative to start)
+float64 x
+float64 y
+float64 theta
+
+# Optionally, set a color when doing the move; otherwise, clear the color.
+bool set_color
+uint8 r
+uint8 g
+uint8 b
+---
+bool success
+---
+float64 percent_complete

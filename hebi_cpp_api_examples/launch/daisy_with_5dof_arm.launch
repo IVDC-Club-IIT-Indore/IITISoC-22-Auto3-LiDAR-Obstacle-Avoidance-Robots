@@ -1,0 +1,14 @@
+<launch>
+    <group ns="daisy">
+        <node pkg="hebi_cpp_api_examples" type="hexapod_control" name="hexapod_control" output="screen" required="true"/>
+        <node pkg="hebi_cpp_api_examples" type="hexapod_controller" name="controller" output="screen" required="true"/>
+    </group>
+    <group ns="arm">
+        <rosparam>
+            ik_seed: [ 0.6, 0.15, -2.85, 0.01, -1.5708 ]
+        </rosparam>
+        <include file="$(find hebi_cpp_api_examples)/launch/arm_node.launch">
+            <arg name="arm_type" value="A-2085-05"/>
+        </include>
+    </group>
+</launch>

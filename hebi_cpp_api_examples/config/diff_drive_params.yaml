@@ -1,0 +1,3 @@
+# Parameters for the module names, gains, hrdf, etc
+names: [ "W1_left", "W2_right" ]
+families: [ "DiffDrive" ]

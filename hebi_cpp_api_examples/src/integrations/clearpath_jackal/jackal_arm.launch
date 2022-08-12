@@ -1,0 +1,61 @@
+<launch>
+
+  <!--
+
+  HEBI / ClearPath Jackal Integration: Jackal Launch File
+
+  This launch file should be run on the internal Jackal PC.  See documentation
+  for installing and setting up this to auto-start at:
+
+  See http://wiki.ros.org/hebi_cpp_api_examples/ClearpathJackal for more information.
+
+  When this launch file is running, you can use the Jackal's joystick to send commands
+  to the HEBI arm.  Note that you can modify the jackal_arm_teleop.py file to customize
+  the behavior of the arm.
+
+  -->
+
+  <!-- specify type of HEBI arm -->
+  <arg name="arm_type" default="A-2085-06" />
+
+  <!-- The moveit configuration matching the above args -->
+  <arg name="moveit_arm_type" value="$(eval (arm_type + '-parallel-gripper'))"/> 
+
+  <!-- specify the planning pipeline -->
+  <arg name="pipeline" default="ompl" />
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Parameters for the module names, gains, hrdf, etc -->
+  <rosparam ns="hebi" file="$(find hebi_cpp_api_examples)/config/$(arg arm_type)_params.yaml" command="load" />
+
+  <!-- Override the home position to match the robot's "above pick" location -->
+  <rosparam>
+    hebi/home_position: [ -1.38, 1.45, 2.28, 2.81, -1.57, 0 ]
+  </rosparam>
+
+  <node ns="hebi" pkg="hebi_cpp_api_examples" type="arm_moveit_node" name="arm_moveit_node" output="screen"/>
+
+  <!-- Start gripper node -->
+  <rosparam ns="hebi" file="$(find hebi_cpp_api_examples)/config/parallel-gripper_params.yaml" command="load" />
+  <node ns="hebi" pkg="hebi_cpp_api_examples" type="gripper_moveit_node" name="gripper_moveit_node" output="screen" required="true"/>
+
+  <node ns="hebi" name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- Publish static transforms to "attach" the HEBI arm to the Jackal -->
+  <node name="jackal_to_hebi_arm" pkg="tf" type="static_transform_publisher" args="-0.12 0 0.0424 1.570796 0 0 /front_mount world 100"/>
+
+  <!-- Run the main MoveIt! executable -->
+  <include ns="hebi" file="$(eval find('hebi_' + moveit_arm_type + '_moveit_config') + '/launch/move_group.launch')">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="pipeline" value="$(arg pipeline)"/>
+    <arg name="load_robot_description" value="true"/>
+  </include>
+
+  <!-- Handle joystick input from the Jackal's controller, and send MoveIt commands to move the arm -->
+  <node pkg="hebi_cpp_api_examples" name="python_joystick_handler" type="jackal_arm_teleop.py" output="screen" required="true"/>
+
+</launch>

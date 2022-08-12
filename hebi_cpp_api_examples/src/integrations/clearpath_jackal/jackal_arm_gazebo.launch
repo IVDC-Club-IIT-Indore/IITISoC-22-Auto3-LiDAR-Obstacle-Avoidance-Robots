@@ -1,0 +1,82 @@
+<launch>
+
+  <!--
+
+  HEBI / ClearPath Jackal Integration: Jackal Launch File
+
+  This launch file should be run on the internal Jackal PC.  See documentation
+  for installing and setting up this to auto-start at:
+
+  See http://wiki.ros.org/hebi_cpp_api_examples/ClearpathJackal for more information.
+
+  When this launch file is running, you can use the Jackal's joystick to send commands
+  to the HEBI arm.  Note that you can modify the jackal_arm_teleop.py file to customize
+  the behavior of the arm.
+
+  -->
+
+  <!-- specify type of HEBI arm -->
+  <arg name="arm_type" default="A-2085-06" />
+  <arg name="gripper_type" value="none" />
+
+  <!-- The moveit configuration matching the above args -->
+  <arg name="moveit_arm_type" value="$(arg arm_type)-parallel-gripper" if="$(eval gripper_type == 'parallel')" /> 
+  <arg name="moveit_arm_type" value="$(arg arm_type)" unless="$(eval gripper_type == 'parallel')" /> 
+
+  <!-- specify the planning pipeline -->
+  <arg name="pipeline" default="ompl" />
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Simulator Arguments -->
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="world_name" default="$(find jackal_gazebo)/worlds/jackal_race.world" />
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <arg name="robot_file" value="$(find hebi_cpp_api_examples)/src/integrations/clearpath_jackal/jackal_hebi.urdf.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro --xacro-ns --inorder $(arg robot_file) hebi_base_frame:=hebi_mount" />
+
+  <include file="$(find jackal_control)/launch/control.launch" />
+  <include file="$(find jackal_control)/launch/teleop.launch">
+    <arg name="joystick" value="false"/>
+  </include>
+
+  <!-- spawn model in gazebo -->
+  <node pkg="gazebo_ros" type="spawn_model" name="robot_spawner" args="-param robot_description -urdf -model jackal_w_hebi_arm -z 1.0" />
+
+  <!-- republish arm joint states from /hebi/joint_states to /joint_states -->
+  <node name="arm_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <rosparam param="source_list">["/hebi/joint_states"]</rosparam>
+  </node>
+
+  <!-- Publish static transforms to "attach" the HEBI arm to the Jackal: in sim transform can be to /hebi_mount so unity -->
+  <node name="jackal_to_hebi_arm" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /hebi_mount world 100"/>
+
+  <include ns="hebi" file="$(find hebi_cpp_api_examples)/launch/arm_moveit_node.launch">
+    <arg name="arm_type" value="$(arg arm_type)" />
+    <arg name="gripper_type" value="$(arg gripper_type)" />
+    <arg name="gui" value="false" />
+  </include>
+
+  <!-- Override the home position to match the robot's "above pick" location -->
+  <rosparam if="$(eval arm_type == 'A-2085-06')">
+    hebi/home_position: [ -1.38, 1.45, 2.28, 2.81, -1.57, 0 ]
+  </rosparam> 
+
+  <!-- Handle joystick input from the Jackal's controller, and send MoveIt commands to move the arm -->
+  <!--
+  <node pkg="hebi_cpp_api_examples" name="python_joystick_handler" type="jackal_arm_teleop.py" output="screen" required="true"/>
+  -->
+
+</launch>

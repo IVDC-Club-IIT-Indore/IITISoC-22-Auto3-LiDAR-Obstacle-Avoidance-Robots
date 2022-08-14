@@ -220,7 +220,8 @@ Step 7 : To save the 3D map (replace "/full_path_directory" with the path to the
 ```
 rosservice call /hdl_graph_slam/save_map "resolution: 0.05 destination: '/full_path_directory/map.pcd'"
 ```
-This map can be launched during runtime alongside hdl people tracking and used for all 3D LiDAR purposes.
+This map can be launched during runtime alongside hdl people tracking and used for all 3D purposes. 
+We also recommend using this to assign coordinates to certain sections which can be used to transport goods autonomously using 2D navigation followed by a robotic arm placing the product(ie complete automation). This might also require a camera sensor to recognize the object but that it far beyond the scope of the PS so it might be added if we feel like revisiting this.
 
 **TO RUN AMCL(MORE ACCURATE... DOESN'T SUPPORT 3D UNLESS RUN ALONGSIDE BASE STACK)**
 
@@ -244,12 +245,15 @@ rviz -d hdl_localization.rviz
 ```
 rosbag play --clock hdl_400.bag
 ```
+
 **HOW TO REMOVE THE 2D LIDAR**
 This process is not recommended. Most research papers we read supported the idea that high speed navigation required lower computation but we wanted to see if we can shave off 100 dollars from the robot without costing the computation. We soon understood why research wasn't too keen on this option. We have provided this section for use cases where the investment into the robot is very low and the environment is relatively simple. (also this part took a lot of effort so we wanted to show it)
 
-We approached this problem by writing a node that converted 3D pointcloud to 2D laserscan. This ensured that relevant data was captured and converted into relevant obstacles. Immediately we realized that it considers
-remaps /mid/points to /velodyne_points
-The repositoryhttps://github.com/ChengeYang/SLAM-with-Velodyne-Lidar-and-Jackal-UGV
+We approached this problem by writing a node that converted 3D pointcloud to 2D laserscan. This ensured that data was captured and converted into relevant obstacles. Immediately we realized that it considers everything as an obstacle so even parts like door frames show up as a wall on the map. Necessary filtering was done using this repository https://github.com/ChengeYang/SLAM-with-Velodyne-Lidar-and-Jackal-UGV (It relies on 14.04's Jackal framework so we had to rewrite parts of it). Finally, we remapped /mid/points to /velodyne_points and hit enter only to find that the filtering was specific to their map and doesn't work well for other maps.
+
+At the very least, we wanted to map our warehouse accurately but the program started throwing errors that tf had 2 unconnected trees. After a lot of bug seaching, we realized that the process was so heavy that it brought our program to 0.1 Hz refresh(We were running it on 10 Hz). The solution is to use a GPU but we didn't have any working version at hand. Further this showed us that this process is too computation heavy to practically run even with C++ nodes.
+
+So we stuck to the research papers for navigation and decided to use 3D LiDAR for more practical purposes along the z axis like the robotic arm functionalities, HDL people tracking and inventory management.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -293,10 +297,7 @@ We were also inspired by F1/10th cars which also require extremely fast computat
 Changes have been made to spatial states and temporal ones, for trajectory optimisation. We have made changes to base_local_planner.yaml for setup and inclusion of dynamic obstacles.
 In simple terms, we added a dynamic obstacle layer which provides a custom inflation based on their movement. TEB local planner allowed us to change these configuration parameters during runtime which helped in quick testing of new ideas for optimization and improvement of the path.
 
-Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one
-
-It is clear that a robust framework was needed with a great deal of optimization of the current navigation stack. We also decided to add a dynamic layer that gives a greater inflation to dynamic obstacles based on their velocities.
-We did a lot more research before settling on TEB local planner. The plugin allowed us to customize the navigation stack in real time which greatly simplified the process. It also provided a great framework for adding additional layers wherein we added a dynamic obstacles layer.
+Takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data. Inflation is done in order to create a region around objects as preferrably avoidable put not impenetratable. We create layers of map and combine them together into one to create a costmap. A star is used to navigate this grid and find a suitable path along this(it needs to be in a form in which the machine can turn smoothly).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -307,9 +308,6 @@ We did a lot more research before settling on TEB local planner. The plugin allo
 - [x] Person Identification (Implemented but hasn't been tested)
 - [x] 3D Object TrackingWe were also inspired by F1/10th cars which also require extremely fast computation and operate in similar ways.
 - [x] Improved Path Planning using C++ code
-- [ ]  Use person identification to make a person follower robot so that it can carry those boxes around
-- [ ]  Use person identification to make a person follower robot so that it can carry those boxes around
-
 
 <div id="ideas"></div>
 
@@ -319,13 +317,13 @@ We did a lot more research before settling on TEB local planner. The plugin allo
 
 Note: Members(or mentors) can add any wacky ideas here through pull requests. If everyone agrees to implement it, we'll switch it to finalized.
 
-- Use person identification to make a person follower robot so that it can carry those boxes around... or do something similar to [MIT's Jackal](https://www.youtube.com/watch?v=CK1szio7PyA)
+- Use person identification to make a person follower robot so that it can carry those boxes around... or do something similar to [MIT's Jackal](https://www.youtube.com/watch?v=CK1szio7PyA) [Might do 1st half... our algorithm behaves like MIT's Jackal so 2nd half done]
 
-- Use roswtf to handle error situations like collisions
+- Use roswtf to handle error situations like collisions  [Done using TEB plugin]
 
-- Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )
-- Mutiple Robot simulations
-- Controlling Jackal using keyboard
+- Merge projects with Robotic arm IITISOC team to make something like [this](https://youtu.be/H-uSBO5e0_M) (Robotic arm combined with person identification sounds like an machine that would be useful for the unavoidable AI takeover :D )  [Partially done]
+- Multiple Robot simulations [Done... will be shown in presentation]
+- Controlling Jackal using keyboard [Done]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -372,6 +370,8 @@ Members must contribute as required and the person with the latest working versi
 3. https://github.com/SMRT-AIST/fast_gicp.git
 4. https://github.com/koide3/hdl_graph_slam
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 [contributors-shield]: https://img.shields.io/github/contributors/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=informational&style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=blueviolet&style=for-the-badge
@@ -380,4 +380,3 @@ Members must contribute as required and the person with the latest working versi
 [stars-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/stargazers
 [issues-shield]: https://img.shields.io/github/issues-raw/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots?color=%23FF0000&style=for-the-badge
 [issues-url]: https://github.com/IVDC-Club-IIT-Indore/IITISoC-22-Auto3-LiDAR-Obstacle-Avoidance-Robots/issues
-

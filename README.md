@@ -170,7 +170,7 @@ source ~/IITISOC_ws/devel/setup.bash
 ## Usage
 Insert commands to run the program and explain how to run its features here.
 
-**TO RUN 2D SLAM AND NAVIGATION**
+**TO RUN 2D SLAM AND NAVIGATION (BASE STACK)**
 
 After going inside the workspace run
 ```
@@ -182,16 +182,15 @@ sudo chmod 777 /opt/ros/noetic/share/jackal_navigation/maps
 cd /opt/ros/noetic/share/jackal_navigation/maps
 rosrun map_server map_saver -f mymap
 ```
-
+Recording of the base stack: https://docs.google.com/document/d/1PtidvDHwXN7AUR4w-XdMQeE_i0ZZn1mg5lUonYRKuww/edit
 
 **TO RUN 3D SLAM**
 
 Step 1 : Type the following in a terminal:-
 ```
 roscore
-
 ```
-Step 2: Run Navigation(shown above) in a different terminal
+Step 2: Run BASE STACK(shown above) in a different terminal
 
 Step 3 : Open a new terminal and type the following:-
 ```
@@ -221,6 +220,36 @@ Step 7 : To save the 3D map (replace "/full_path_directory" with the path to the
 ```
 rosservice call /hdl_graph_slam/save_map "resolution: 0.05 destination: '/full_path_directory/map.pcd'"
 ```
+This map can be launched during runtime alongside hdl people tracking and used for all 3D LiDAR purposes.
+
+**TO RUN AMCL(MORE ACCURATE... DOESN'T SUPPORT 3D UNLESS RUN ALONGSIDE BASE STACK)**
+
+Step 1 : Follow the steps in BASE STACK
+
+Step 2 : Run the following in a new terminal
+```
+roslaunch jackal_navigation amcl_demo.launch
+```
+
+**TO RUN HDL PEOPLE TRACKING**
+This step can be merged with the above by modifying the launch files. Has been tested with the base stack.
+```
+rosparam set use_sim_time true
+roslaunch hdl_people_tracking hdl_people_tracking.launch
+```
+```
+roscd hdl_localization/rviz
+rviz -d hdl_localization.rviz
+```
+```
+rosbag play --clock hdl_400.bag
+```
+**HOW TO REMOVE THE 2D LIDAR**
+This process is not recommended. Most research papers we read supported the idea that high speed navigation required lower computation but we wanted to see if we can shave off 100 dollars from the robot without costing the computation. We soon understood why research wasn't too keen on this option. We have provided this section for use cases where the investment into the robot is very low and the environment is relatively simple. (also this part took a lot of effort so we wanted to show it)
+
+We approached this problem by writing a node that converted 3D pointcloud to 2D laserscan. This ensured that relevant data was captured and converted into relevant obstacles. Immediately we realized that it considers
+remaps /mid/points to /velodyne_points
+The repositoryhttps://github.com/ChengeYang/SLAM-with-Velodyne-Lidar-and-Jackal-UGV
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

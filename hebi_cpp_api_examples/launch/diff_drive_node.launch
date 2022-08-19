@@ -1,0 +1,6 @@
+<launch>
+  <!-- Parameters for the module names -->
+  <rosparam file="$(find hebi_cpp_api_examples)/config/diff_drive_params.yaml" command="load" />
+
+  <node pkg="hebi_cpp_api_examples" type="diff_drive_node" name="diff_drive_node" />
+</launch>

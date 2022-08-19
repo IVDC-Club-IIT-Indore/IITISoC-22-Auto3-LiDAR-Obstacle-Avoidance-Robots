@@ -1,0 +1,4 @@
+# Parameters for the module names, gains, hrdf, etc
+names: [ "frontLeft", "backLeft", "frontRight", "backRight" ]
+families: [ "mecanumBase" ]
+publish_odom: true

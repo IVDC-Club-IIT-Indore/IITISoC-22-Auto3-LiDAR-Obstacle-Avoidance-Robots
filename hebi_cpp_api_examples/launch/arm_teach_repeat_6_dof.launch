@@ -1,0 +1,17 @@
+<launch>
+  <!-- Parameters for the waypoints, paths, module names, gains, hrdf, etc -->
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/data/paths/6_dof_circle.txt"/>
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/data/waypoints/6_dof_home.txt"/>
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/data/waypoints/6_dof_stow.txt"/>
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/data/waypoints/6_dof_pick.txt"/>
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/data/waypoints/6_dof_place.txt"/>
+
+  <rosparam command="load" file="$(find hebi_cpp_api_examples)/config/a-2085-06_params.yaml" />
+  <rosparam>
+    enabled_paths: [ "circle" ]
+    enabled_waypoints: [ "home", "stow", "pick", "place" ]
+    home_position: [ 0,1.69517,2.16275,2.44159,-1.39,1.57459 ]
+  </rosparam>
+
+  <node pkg="hebi_cpp_api_examples" type="arm_teach_repeat_node" name="teach_repeat" output="screen"/>
+</launch>

@@ -1,0 +1,9 @@
+# Parameters for the module name, gains, etc
+name: "gripperSpool"
+family: "Arm"
+gains_package: "hebi_cpp_api_examples"
+gains_file: "config/gains/gripper_spool_gains.xml"
+
+# Note: the "moveit_joint" must matches the configuration from the MoveIt config; only
+# required when running MoveIt examples
+moveit_joint: "end_effector/input_l_finger"

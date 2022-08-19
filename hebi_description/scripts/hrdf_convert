@@ -1,0 +1,47 @@
+#! /usr/bin/env python
+
+import os
+import sys
+import tempfile
+import yaml
+import subprocess
+import argparse
+
+import rospkg
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='print urdf based on a config.yaml to stdout (used to set robot_description)')
+    parser.add_argument('config_file')
+
+    tempdir = tempfile.gettempdir()
+    args = parser.parse_args()
+
+    with open(args.config_file, 'r') as config_file:
+        robot_config = yaml.safe_load(config_file)
+        hrdf_file = os.path.join(rospkg.RosPack().get_path(robot_config["hrdf_package"]), robot_config["hrdf_file"])
+        names = robot_config["names"]
+        try:
+            family = robot_config["families"][0]
+        except KeyError:
+            family = robot_config["family"]
+
+    model_name = os.path.splitext(os.path.basename(hrdf_file))[0]
+
+    # convert hrdf -> xacro using the information contained in the standard yaml config
+    try:
+        subprocess.check_call([
+            'rosrun', 'hebi_description', 'urdf_generator.py', hrdf_file,
+            '--nosdf',
+            '--urdfdir', tempdir,
+            '--family', family,
+            '--actuators'] + names
+        )
+    except subprocess.CalledProcessError as e:
+        print("Error running urdf_generator.py - check that params yaml and hrdf file exist at provided paths!")
+        sys.exit(-1)
+
+    xacro_file = os.path.join(tempdir, '{}.xacro'.format(model_name))
+    # expand xacro file to urdf and print to stdout
+    subprocess.call(['rosrun', 'xacro', 'xacro', '--xacro-ns', xacro_file])
+

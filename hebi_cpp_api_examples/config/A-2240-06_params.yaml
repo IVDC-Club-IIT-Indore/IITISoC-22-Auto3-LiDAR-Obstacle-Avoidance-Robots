@@ -1,0 +1,8 @@
+# Parameters for the module names, gains, hrdf, etc
+names: [ "J1_base", "J2_shoulder", "J3_elbow", "J4_wrist1", "J5_wrist2", "J6_wrist3" ]
+families: [ "HEBI" ]
+gains_package: "hebi_cpp_api_examples"
+gains_file: "config/gains/A-2240-06_gains.xml"
+hrdf_package: "hebi_cpp_api_examples"
+hrdf_file: "config/hrdf/A-2240-06.hrdf"
+home_position: [ 0.6, 0.15, -2.85, 0.01, -1.5708, 0.01 ]

@@ -1,0 +1,3 @@
+# Parameters for the module names, gains, hrdf, etc
+names: [ "W1", "W2", "W3" ]
+families: [ "OmniDrive" ]

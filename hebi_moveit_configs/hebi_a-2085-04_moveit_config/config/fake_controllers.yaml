@@ -1,0 +1,7 @@
+controller_list:
+  - name: fake_hebi_arm_controller
+    joints:
+      - Arm/J1_base/X5_4
+      - Arm/J2_shoulder/X5_9
+      - Arm/J3_elbow/X5_4
+      - Arm/J4_wrist1/X5_1

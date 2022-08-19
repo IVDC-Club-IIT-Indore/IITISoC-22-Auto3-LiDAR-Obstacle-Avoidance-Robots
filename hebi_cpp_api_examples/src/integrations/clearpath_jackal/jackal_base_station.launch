@@ -1,0 +1,34 @@
+<launch>
+
+  <!--
+
+  HEBI / ClearPath Jackal Integration: Remote Base Station Launch File
+
+  This launch file should be run on a separate PC from the Jackal.  See documentation
+  for setting up this remote connection at:
+
+  https://www.clearpathrobotics.com/assets/guides/jackal/network.html#remote-ros-connection
+
+  When this launch file is running, you can visualize the robot in rviz and use RViz to send
+  MoveIt commands to the robot.
+
+  See http://wiki.ros.org/hebi_cpp_api_examples/ClearpathJackal for more information.
+
+  -->
+
+  <!-- specify type of HEBI arm -->
+  <arg name="arm_type" default="A-2085-06" />
+
+  <!-- The moveit configuration matching the above args -->
+  <arg name="moveit_arm_type" value="$(eval (arm_type + '-parallel-gripper'))"/> 
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Run Rviz to visualize the state of the move_group node -->
+  <include file="$(eval find('hebi_' + moveit_arm_type + '_moveit_config') + '/launch/moveit_rviz.launch')">
+    <arg name="rviz_config" value="$(eval find('hebi_cpp_api_examples') + '/src/integrations/clearpath_jackal/rviz_config.rviz')"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+</launch>

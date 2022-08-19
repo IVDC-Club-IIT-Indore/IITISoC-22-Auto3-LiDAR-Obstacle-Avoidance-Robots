@@ -1,0 +1,309 @@
+<!-- Usage notes are located in this file, look for "Usage"-->
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <gui>
+      <camera name="user_camera">
+        <pose>0 -18 8.0 0 0.523 1.5707</pose>
+      </camera>
+    </gui>
+    <light name="sun" type="directional">
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0 0.5 -0.9</direction>
+    </light>
+
+    <light name="point_light" type="point">
+      <pose>0 -0.377195 6.59868 0 -0 0</pose>
+      <diffuse>0.784314 0.784314 0.784314 1</diffuse>
+      <specular>0.0980392 0.0980392 0.0980392 1</specular>
+      <attenuation>
+        <range>50</range>
+        <constant>0.8</constant>
+        <linear>0</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+    <model name="aws_robomaker_warehouse_ShelfF_01_001">
+      <include>
+        <pose>-5.795143 -0.956635 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfF_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ShelfE_01_001">
+      <include>
+        <pose>4.73156 0.57943 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfE_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ShelfE_01_002">
+      <include>
+        <pose>4.73156 -4.827049 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfE_01</uri>
+      </include>
+    </model>
+        
+    <model name="aws_robomaker_warehouse_ShelfE_01_003">
+      <include>
+        <pose>4.73156 -8.6651 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfE_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ShelfD_01_001">
+      <include>
+        <pose>4.73156 -1.242668 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfD_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ShelfD_01_002">
+      <include>
+        <pose>4.73156 -3.038551 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfD_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ShelfD_01_003">
+      <include>
+        <pose>4.73156 -6.750542 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ShelfD_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_GroundB_01_001">
+      <include>
+        <pose>0.0 0.0 -0.090092 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_GroundB_01</uri>
+      </include>
+    </model>
+      
+    <model name="aws_robomaker_warehouse_Lamp_01_005">
+      <include>
+        <pose>0 0 -4 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_Lamp_01</uri>
+      </include>
+    </model>
+       
+    <model name="aws_robomaker_warehouse_Bucket_01_020">
+      <include>
+        <pose>0.433449 9.631706 0 0 0 -1.563161</pose>
+        <uri>model://aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_Bucket_01_021">
+      <include>
+        <pose>-1.8321 -6.3752 0 0 0 -1.563161</pose>
+        <uri>model://aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+    </model>
+      
+    <model name="aws_robomaker_warehouse_Bucket_01_022">
+      <include>
+        <pose>0.433449 8.59 0 0 0 -1.563161</pose>
+        <uri>model://aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringA_01_016">
+      <include>
+        <pose>5.708138 8.616844 -0.017477 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringA_01_017">
+      <include>
+        <pose>3.408638 8.616844 -0.017477 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringA_01_018">
+      <include>
+        <pose>-1.491287 5.222435 -0.017477 0 0 -1.583185</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_027">
+      <include>
+        <pose>3.324959 3.822449 -0.012064 0 0 1.563871</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_028">
+      <include>
+        <pose>5.54171 3.816475 -0.015663 0 0 -1.583191</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_029">
+      <include>
+        <pose>5.384239 6.137154 0 0 0 3.150000</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_030">
+      <include>
+        <pose frame="">3.236 6.137154 0 0 0 3.150000</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_031">
+      <include>
+        <pose>-1.573677 2.301994 -0.015663 0 0 -3.133191</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringC_01_032">
+      <include>
+        <pose>-1.2196 9.407 -0.015663 0 0 1.563871</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+    </model>
+
+    <model name="aws_robomaker_warehouse_ClutteringD_01_005">
+      <include>
+        <pose>-1.634682 -7.811813 -0.319559 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_ClutteringD_01</uri>
+      </include>
+    </model>
+                                                 
+    <model name="aws_robomaker_warehouse_TrashCanC_01_002">
+      <include>
+        <pose>-1.592441 7.715420 0 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_TrashCanC_01</uri>
+      </include>
+    </model>
+
+
+    <model name="aws_robomaker_warehouse_PalletJackB_01_001">
+      <include>
+        <pose>-0.276098 -9.481944 0.023266 0 0 0</pose>
+        <uri>model://aws_robomaker_warehouse_PalletJackB_01</uri>
+      </include>
+    </model>
+
+    <!-- Usage: modify the <pose> elements of each actor to change their
+         starting location. Modify the <target> elements of each actor to
+         change their destination. The <target_weight> can be used to
+         tune the vector field used by the ActorPlugin to control the Actor. -->
+
+    <actor name="person_walking">
+      <skin>
+        <filename>file://media/models/walk.dae</filename>
+      </skin>
+      <animation name="walking">
+        <filename>file://media/models/walk.dae</filename>
+        <scale>1.000000</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+      <loop>true</loop>
+      <delay_start>0</delay_start>
+      <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0</time>
+            <pose>0 -8 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>6</time>
+            <pose>0 -6 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>8</time>
+            <pose>-1 -5 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>18</time>
+            <pose>-3 -5 0 0 0 3.14</pose>
+          </waypoint>
+          <waypoint>
+            <time>20</time>
+            <pose>-3.8 -4 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>40</time>
+            <pose>-3.8 9 0 0 0 1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>42</time>
+            <pose>-3.8 9 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>60</time>
+            <pose>-3.8 1 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>62</time>
+            <pose>-3 0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>70</time>
+            <pose>-1 0 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>72</time>
+            <pose>0 -1 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>88</time>
+            <pose>0 -8 0 0 0 -1.57</pose>
+          </waypoint>
+          <waypoint>
+            <time>90</time>
+            <pose>0 -8 0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+      
+      <link name="person_walking">
+        <inertial>
+          <pose>0 -8 0 0 0 0</pose>
+          <mass>80.0</mass>
+          <inertia>
+            <ixx>27.82</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>24.88</iyy>
+            <iyz>0</iyz>
+            <izz>4.57</izz>
+          </inertia>
+        </inertial>
+
+        <collision name="bottom">
+          <pose>0 -8 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.35 0.75 2</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      
+    </actor>
+
+  </world>
+</sdf>

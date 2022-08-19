@@ -1,0 +1,34 @@
+<launch>
+  <rosparam ns="base"    command="load" file="$(find hebi_cpp_api_examples)/config/omni_base_params.yaml" />
+  <rosparam ns="arm"     command="load" file="$(find hebi_cpp_api_examples)/config/A-2085-06_params.yaml" />
+  <rosparam ns="gripper" command="load" file="$(find hebi_cpp_api_examples)/config/parallel-gripper_params.yaml" />
+  <rosparam>
+    base/families: [ "Rosie" ]
+
+    arm/families: [ "Rosie" ]
+    arm/home_position: [ 0, 1.69517, 2.16275, 2.44159, -1.39, 1.57459 ]
+    arm/enabled_paths: [ ]
+    arm/enabled_waypoints: [ ]
+
+    gripper/family: "Rosie"
+  </rosparam>
+
+  <!-- Robot components -->
+  <node ns="base" pkg="hebi_cpp_api_examples" type="omni_base_node" name="omni_base_node" output="screen" required="true"/>
+  <node ns="arm" pkg="hebi_cpp_api_examples" type="arm_teach_repeat_node" name="teach_repeat_node" output="screen" required="true"/>
+  <node ns="gripper" pkg="hebi_cpp_api_examples" type="gripper_node" name="gripper_node" output="screen" required="true"/>
+
+  <!-- Mobile IO controller -->
+  <node pkg="hebi_cpp_api_examples" type="rosie_teach_repeat_controller_node" name="rosie_teach_repeat_controller_node" output="screen" required="true">
+    <remap from="/cmd_vel" to="/base/cmd_vel"/>
+
+    <remap from="/playback" to="/arm/playback"/>
+    <remap from="/compliant_mode" to="/arm/compliant_mode"/>
+    <remap from="/save_waypoint" to="/arm/save_waypoint"/>
+
+    <remap from="/gripper_strength" to="/gripper/gripper_strength"/>
+
+    <param name="family" value="Rosie"/>
+  </node>
+
+</launch>

@@ -1,0 +1,12 @@
+controller_list:
+  - name: fake_hebi_arm_controller
+    joints:
+      - Arm/J1_base/X8_9
+      - Arm/J2_shoulder/X8_16
+      - Arm/J3_elbow/X8_9
+      - Arm/J4_wrist1/X5_1
+      - Arm/J5_wrist2/X5_1
+      - Arm/J6_wrist3/X5_1
+  - name: fake_hand_controller
+    joints:
+      - end_effector/input_l_finger

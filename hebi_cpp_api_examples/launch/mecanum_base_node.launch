@@ -1,0 +1,5 @@
+<launch>
+  <rosparam file="$(find hebi_cpp_api_examples)/config/mecanum_base_params.yaml" command="load" />
+
+  <node pkg="hebi_cpp_api_examples" type="mecanum_base_node" name="mecanum_base_node" />
+</launch>

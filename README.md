@@ -15,7 +15,7 @@ Members :
 - [Sairaj Loke](https://github.com/SairajLoke)
 - [Akshit Raizada](https://github.com/AkshitRaizada)
 - [Abiroop Mohan](https://github.com/Abiroop)
-- [Aditya Guhagarkar](https://github.com/AG10GA)
+- [Aditya Guhagarkar](https://github.com/AdityaGuhagarkar)
 
 [![](https://img.shields.io/badge/License-GPLv3-blue.svg)]()
 

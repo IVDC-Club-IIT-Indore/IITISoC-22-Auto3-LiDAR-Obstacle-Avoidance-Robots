@@ -11,7 +11,7 @@ This repository was written for the Indian Institute of Technology Indore Summer
 
 Mentors: [Kshitij Bhat](https://github.com/KshitijBhat), [Bhavya Dalal](https://github.com/dalalbhavya)
 
-Members :  
+Members:-  
 - [Sairaj Loke](https://github.com/SairajLoke)
 - [Akshit Raizada](https://github.com/AkshitRaizada)
 - [Abiroop Mohan](https://github.com/Abiroop)

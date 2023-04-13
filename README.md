@@ -17,6 +17,9 @@ Members :
 - [Abiroop Mohan](https://github.com/Abiroop)
 - [Aditya Guhagarkar](https://github.com/AG10GA)
 
+
+[Presentation](https://docs.google.com/presentation/d/17n4HcefMn-hUwC2mE2IByuKePmLV2jfX/edit?usp=share_link&ouid=109949480721091900064&rtpof=true&sd=true: )
+
 [![](https://img.shields.io/badge/License-GPLv3-blue.svg)]()
 
 <!-- TABLE OF CONTENTS -->
